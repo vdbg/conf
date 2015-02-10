@@ -58,7 +58,6 @@ alias ....='cd ../../../../'
 alias root='cd ~'
 alias desktop='cd ~/Desktop'
 
-
 if [ "$OS" == "Windows" ]; then
 	alias n=notepad
 	alias npp='/c/Program\ Files\ \(x86\)/Notepad++/notepad++.exe'
