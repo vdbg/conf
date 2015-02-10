@@ -24,7 +24,7 @@ fi
 
 alias n=notepad
 alias npp='/c/Program\ Files\ \(x86\)/Notepad++/notepad++.exe'
-alias ..=cd ..
+alias ..='cd ..'
 alias root=cd
 
 
