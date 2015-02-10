@@ -56,6 +56,7 @@ alias cd..='cd ..'
 alias ...='cd ../../../'
 alias ....='cd ../../../../'
 alias root='cd ~'
+alias desktop='cd ~/Desktop'
 
 
 if [ "$OS" == "Windows" ]; then
