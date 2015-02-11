@@ -72,7 +72,7 @@ if [ "$OS" == "Linux" ]; then
 	alias npp=gvim
 fi
 
-if [ -d "~/Git" ]; then
+if [ -d "$HOME/Git" ]; then
 	alias dev="cd ~/Git"
 elif [ -d "/f/git" ]; then
 	alias dev="cd /f/git"
