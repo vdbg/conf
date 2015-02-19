@@ -56,12 +56,13 @@ alias ....='cd ../../../../'
 alias root='cd ~'
 alias desktop='cd ~/Desktop'
 alias cls=clear
-
+alias dir='ls -AlF'
 
 alias gitp='git pull'
 alias gits='git status'
 alias gitc='git commit'
 alias gita='git add'
+alias gitd='git diff'
 
 if [ "$OS" == "Windows" ]; then
 	alias n=notepad
