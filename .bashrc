@@ -67,6 +67,7 @@ alias gits='git status'
 alias gitc='git commit'
 alias gita='git add'
 alias gitd='git diff'
+alias gitu='git checkout'
 
 if [ "$OS" == "Windows" ]; then
 	alias n=notepad
