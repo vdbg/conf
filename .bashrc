@@ -34,8 +34,12 @@ if [ "$OS" == "Windows" ]; then
 	fi
 fi
 
-if [ -f "~/bin" ]; then
-	PATH=~/bin:$PATH
+if [ -d "$HOME/bin" ]; then
+	PATH=$HOME/bin:$PATH
+fi
+
+if [ -d "$HOME/algs4/bin" ]; then
+	PATH=$PATH:$HOME/algs4/bin
 fi
 
 if [ "$OS" == "Linux" -a $UID -ne 0 ]; then
