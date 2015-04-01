@@ -12,6 +12,14 @@ echo .bashrc $OS
 
 SSH_ENV=$HOME/.ssh/environment
 
+## Too slow :(
+# GIT_PS1_SHOWDIRTYSTATE=yes
+# GIT_PS1_SHOWSTASHSTATE=yes
+# GIT_PS1_SHOWUNTRACKEDFILES=yes
+
+# Include the current e-mail in the prompt
+PS1='\[\033]0;$MSYSTEM:${PWD//[^[:ascii:]]/?}\007\]\n\[\033[32m\]\u@\h \[\033[33m\]\w$(__git_ps1  " [%s $(git config --get user.email)] ")\[\033[0m\]\n$ '
+
 # start the ssh-agent
 function start_agent {
 	echo "Initializing new SSH agent..."
@@ -68,6 +76,16 @@ alias gitc='git commit'
 alias gita='git add'
 alias gitd='git diff'
 alias gitu='git checkout'
+
+git_work() {
+	git config --local user.name "Grégory Vandenbrouck"
+	git config --local user.email gregoryv@microsoft.com
+}
+
+git_perso() {
+	git config --local user.name vdbg
+	git config --local user.email vdb_g@hotmail.com
+}
 
 if [ "$OS" == "Windows" ]; then
 	alias n=notepad
