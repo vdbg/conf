@@ -50,6 +50,10 @@ if [ -d "$HOME/algs4/bin" ]; then
 	PATH=$PATH:$HOME/algs4/bin
 fi
 
+if [ -d "/f/apps/bin" ]; then
+	PATH=$PATH:/f/apps/bin
+fi
+
 if [ "$OS" == "Linux" -a $UID -ne 0 ]; then
     alias reboot='sudo reboot'
     alias update='sudo apt-get upgrade'
