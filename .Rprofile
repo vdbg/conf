@@ -15,3 +15,6 @@ dev <- function() {
     stop("Unable to figure out dev dir.")
   }  
 }
+
+# Otherwise rpubs publish fails
+options(rpubs.upload.method = "internal")
