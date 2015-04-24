@@ -1,3 +1,5 @@
 #!/bin/sh
-cp $(dirname "$0")/.bashrc ~/.bashrc
+echo . \"$( cd $(dirname $0) ; pwd -P )/.bashrc\" > ~/.bashrc
+
+
 
