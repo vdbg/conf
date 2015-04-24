@@ -1,0 +1,37 @@
+#=
+#= Redefines aliases for powershell. See aliases.doskey
+#=
+desktop=Set-Location ([Environment]::GetFolderPath("Desktop") + "\$1")
+dev=Set-Location "F:\git\$1"
+root=Set-Location "${Env:USERPROFILE}\$1"
+pdesktop=Push-Location ([Environment]::GetFolderPath("Desktop") + "\$1")
+pdev=Push-Location "F:\git\$1"
+proot=Push-Location "${Env:USERPROFILE}\$1"
+
+#=  Search
+d=Get-ChildItem -Recurse $1
+
+#=  VS
+vs12=. "${Env:ProgramFiles(x86)}\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe" $*
+vs14=. "${Env:ProgramFiles(x86)}\Microsoft Visual Studio 14.0\Common7\IDE\devenv.exe" $*
+vs=if (test-path env:\VisualStudioVersion) { . "${Env:ProgramFiles(x86)}\Microsoft Visual Studio ${Env:VisualStudioVersion}\Common7\IDE\devenv.exe" $* }
+
+#=  Editing
+n=. notepad $*
+npp=. "c:\Program Files (x86)\Notepad++\notepad++.exe" $*
+
+#=  TFS
+tfed=tf edit $* ; . notepad $*
+tfedn=tf edit $* ; . "c:\Program Files (x86)\Notepad++\notepad++.exe" $*
+tfh=if ( '$1' -eq '' ) { start tf.exe -NoNewWindow -ArgumentList 'history * /r' } else { start tf.exe -NoNewWindow -ArgumentList 'history $* /r' }
+
+git=. $Env:gitexe $*
+gitp=. $Env:gitexe pull $*
+gits=. $Env:gitexe status $*
+gitc=. $Env:gitexe commit $*
+gita=. $Env:gitexe add $*
+gitd=. $Env:gitexe diff $*
+gitu=. $Env:gitexe checkout $*
+
+#= Next line clears out the "#" macro
+#=
