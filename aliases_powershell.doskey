@@ -27,6 +27,7 @@ tfh=if ( '$1' -eq '' ) { start tf.exe -NoNewWindow -ArgumentList 'history * /r' 
 
 git=. $Env:gitexe $*
 gitp=. $Env:gitexe pull $*
+gitpp=. $Env:gitexe push $*
 gits=. $Env:gitexe status $*
 gitc=. $Env:gitexe commit $*
 gita=. $Env:gitexe add $*

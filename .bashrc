@@ -75,6 +75,7 @@ alias cls=clear
 alias dir='ls -AlF'
 
 alias gitp='git pull'
+alias gitpp='git push'
 alias gits='git status'
 alias gitc='git commit'
 alias gita='git add'

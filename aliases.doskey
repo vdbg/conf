@@ -31,6 +31,7 @@ pp=popd
 #=  git
 git=%gitexe% $*
 gitp=%gitexe% pull $*
+gitpp=%gitexe% push $*
 gits=%gitexe% status $*
 gitc=%gitexe% commit $*
 gita=%gitexe% add $*
