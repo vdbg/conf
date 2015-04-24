@@ -1,0 +1,60 @@
+#=  Build
+msb=msbuild /nr:false /m "/clp:verbosity=minimal;Summary" /fl /flp:Verbosity=normal /p:TreatWarningsAsErrors="true" $*
+msb64=msbuild /nr:false /m "/clp:verbosity=minimal;Summary" /fl /flp:Verbosity=normal /p:TreatWarningsAsErrors="true" /p:Platform="x64" $*
+msb64r=msbuild /nr:false /m "/clp:verbosity=minimal;Summary" /fl /flp:Verbosity=normal /p:TreatWarningsAsErrors="true" /p:Configuration="Release" /p:Platform="x64" $*
+msbr=msbuild /nr:false /m "/clp:verbosity=minimal;Summary" /fl /flp:Verbosity=normal /p:TreatWarningsAsErrors="true" /p:Configuration="Release" $*
+msbca=msbuild /nr:false /m "/clp:verbosity=minimal;Summary" /fl /flp:Verbosity=normal /p:TreatWarningsAsErrors="true" /p:EnableCodeAnalysis=true $*
+clean=msbuild /m /t:Clean $*
+
+
+#=  Navigation
+..=cd ..\$1
+...=cd ..\..\$1
+....=cd ..\..\..\$1
+.....=cd ..\..\..\..\$1
+......=cd ..\..\..\..\..\$1
+desktop=cd /d "%USERPROFILE%\Desktop\$1"
+dev=cd /d "F:\git\$1"
+root=cd /d "%USERPROFILE%\$1"
+\=cd \
+p..=pushd ..\$1
+p...=pushd ..\..\$1
+p....=pushd ..\..\..\$1
+p.....=pushd ..\..\..\..\$1
+p......=pushd ..\..\..\..\..\$1
+pdesktop=pushd "%USERPROFILE%\Desktop\$1"
+pdev=pushd "F:\git\$1"
+proot=pushd "%USERPROFILE%\$1"
+p\=pushd \
+pp=popd
+
+#=  git
+git=%gitexe% $*
+gitp=%gitexe% pull $*
+gits=%gitexe% status $*
+gitc=%gitexe% commit $*
+gita=%gitexe% add $*
+gitd=%gitexe% diff $*
+gitu=%gitexe% checkout $*
+
+#=  Search
+wh=where.exe $*
+f=findstr /npis $1 $2
+fs=findstr /npis /C:$1 $2
+d=dir /s $1
+
+#=  VS
+vs12="%ProgramFiles(x86)%\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe" $*
+vs14="%ProgramFiles(x86)%\Microsoft Visual Studio 14.0\Common7\IDE\devenv.exe" $*
+vs=IF DEFINED VisualStudioVersion "%ProgramFiles(x86)%\Microsoft Visual Studio %VisualStudioVersion%\Common7\IDE\devenv.exe" $*
+
+#=  Editing
+n=notepad.exe $*
+npp="c:\Program Files (x86)\Notepad++\notepad++.exe" $*
+
+#=  Misc
+ps=powershell $*
+chrome="c:\Program Files (x86)\Google\Chrome\Application\chrome.exe" $*
+
+#= Next line clears out the "#" macro
+#=
