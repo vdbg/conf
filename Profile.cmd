@@ -11,3 +11,18 @@ rem Red background if admin
 cacls "%systemroot%\system32\config\system" > nul 2> nul && color 4F
 
 if exist "%~dp0\aliases.doskey" doskey /EXENAME=cmd.exe /MACROFILE="%~dp0\aliases.doskey"
+
+if not exist "C:\Program Files\R\R-3.1.3" goto :noR
+
+set RHOME=C:\Program Files\R\R-3.1.3
+set RPATH=C:\Program Files\R\R-3.1.3
+set PATH=%RHOME%\bin\x64;%PATH%
+
+if not exist "%RPATH%\lib\x64" mkdir "%RPATH%\lib\x64"
+if not exist "%RPATH%\lib\x64\R.lib" copy "%~dp0\R.lib" "%RPATH%\lib\x64\R.lib"
+
+if exist "f:\svn\bigAnalytics\trunk" set RXSVNROOT=f:\svn\bigAnalytics\trunk
+if exist "f:\git\RRE-Pull\bigAnalytics" set bigAnalytics_git=f:\git\RRE-Pull\bigAnalytics
+
+:noR
+
