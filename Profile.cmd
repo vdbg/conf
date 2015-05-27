@@ -23,6 +23,7 @@ if not exist "%RPATH%\lib\x64\R.lib" copy "%~dp0\R.lib" "%RPATH%\lib\x64\R.lib"
 
 if exist "f:\svn\bigAnalytics\trunk" set RXSVNROOT=f:\svn\bigAnalytics\trunk
 if exist "f:\git\RRE-Pull\bigAnalytics" set bigAnalytics_git=f:\git\RRE-Pull\bigAnalytics
+if defined RXSVNROOT set ENABLE_RXSQL_TEST=true
 
 :noR
 
