@@ -92,6 +92,23 @@ git_perso() {
 	git config --local user.email vdb_g@hotmail.com
 }
 
+git_nuke() {
+	git status
+	read -p "WARNING: NUKE everything under $PWD (y/n)? " answer
+	case ${answer:0:1} in
+		y|Y )
+			echo "NUKING"
+			git reset HEAD
+			git checkout .
+			git clean -f
+			git status
+		;;
+		* )
+			echo "OK; not deleting anything."
+		;;
+	esac
+}
+
 if [ "$OS" == "Windows" ]; then
 	alias n=notepad
 	alias npp='/c/Program\ Files\ \(x86\)/Notepad++/notepad++.exe'
