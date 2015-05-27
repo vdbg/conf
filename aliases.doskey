@@ -38,6 +38,9 @@ gita=%gitexe% add $*
 gitd=%gitexe% diff $*
 gitu=%gitexe% checkout $*
 
+#= svn
+svnam=svn status | findstr /b [M^|A]
+
 #=  Search
 wh=where.exe $*
 f=findstr /npis $1 $2
