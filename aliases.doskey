@@ -40,6 +40,11 @@ gitu=%gitexe% checkout $*
 
 #= svn
 svnam=svn status | findstr /b [M^|A]
+svnp=svn up $*
+svns=svn status $*
+svna=svn add $*
+svnd=svn diff $*
+svn_nuke=@for /f "tokens=2,*" %I  IN ('svn status ^| findstr /bc:? ') DO @(if exist "%I" del /Q "%I" && if exist "%I" rmdir /s /q "%I" )
 
 #=  Search
 wh=where.exe $*
