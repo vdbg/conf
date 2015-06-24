@@ -3,6 +3,8 @@ if defined profile_loaded goto :eof
 set profile_loaded=true
 
 if exist f:\apps\bin set PATH=f:\apps\bin:%PATH%
+if exist f:\git\prog\batch set PATH=f:\git\prog\batch:%PATH%
+
 prompt $M$P$G
 
 set gitexe="C:\Program Files (x86)\Git\bin\git.exe"
