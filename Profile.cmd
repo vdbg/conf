@@ -14,16 +14,18 @@ cacls "%systemroot%\system32\config\system" > nul 2> nul && color 4F
 
 if exist "%~dp0\aliases.doskey" doskey /EXENAME=cmd.exe /MACROFILE="%~dp0\aliases.doskey"
 
-if not exist "%ProgramFiles%\R\R-3.1.3" goto :noR
+if not defined RHOME if exist "%ProgramFiles%\RRO\R-3.1.3" set RHOME=%ProgramFiles%\RRO\R-3.1.3
+if not defined RHOME if exist "%ProgramFiles%\R\R-3.1.3" set RHOME=%ProgramFiles%\R\R-3.1.3
+if not defined RHOME goto :noR
 
-set RHOME=%ProgramFiles%\R\R-3.1.3
-set RPATH=%ProgramFiles%\R\R-3.1.3
+set RPATH=%RHOME%
 call :add_path "%RHOME%\bin\x64"
 
 if not exist "%RPATH%\lib\x64" mkdir "%RPATH%\lib\x64"
-if not exist "%RPATH%\lib\x64\R.lib" copy "%~dp0\R.lib" "%RPATH%\lib\x64\R.lib"
+if not exist "%RPATH%\lib\x64\R.lib" copy "%~dp0R.lib" "%RPATH%\lib\x64\R.lib"
 
 if exist "f:\svn\bigAnalytics\trunk" set RXSVNROOT=f:\svn\bigAnalytics\trunk
+if exist "f:\svn\bigAnalytics1\trunk" set RXSVNROOT=f:\svn\bigAnalytics1\trunk
 if exist "f:\git\RRE-Pull\bigAnalytics" set bigAnalytics_git=f:\git\RRE-Pull\bigAnalytics
 if defined RXSVNROOT set ENABLE_RXSQL_TEST=true
 
