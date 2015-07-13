@@ -5,7 +5,7 @@ set profile_loaded=true
 call :add_path f:\apps\bin
 call :add_path f:\git\prog\batch
 
-prompt $M$P$G
+prompt $+$M$P$G
 
 set gitexe="%ProgramFiles(x86)%\Git\bin\git.exe"
 
