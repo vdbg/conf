@@ -50,20 +50,22 @@ svn_nuke=@for /f "tokens=2,*" %I  IN ('svn status ^| findstr /bc:? ') DO @(if ex
 wh=where.exe $*
 f=findstr /npis $1 $2
 fs=findstr /npis /C:$1 $2
+rs=findstr /si $1 $2
 d=dir /s $1
 
 #=  VS
 vs12="%ProgramFiles(x86)%\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe" $*
 vs14="%ProgramFiles(x86)%\Microsoft Visual Studio 14.0\Common7\IDE\devenv.exe" $*
-vs=IF DEFINED VisualStudioVersion "%ProgramFiles(x86)%\Microsoft Visual Studio %VisualStudioVersion%\Common7\IDE\devenv.exe" $*
+vs=if defined VisualStudioVersion "%ProgramFiles(x86)%\Microsoft Visual Studio %VisualStudioVersion%\Common7\IDE\devenv.exe" $*
+vsdbg=if defined VisualStudioVersion "%ProgramFiles(x86)%\Microsoft Visual Studio %VisualStudioVersion%\Common7\IDE\devenv.exe" /debugexe $*
 
 #=  Editing
 n=notepad.exe $*
-npp="c:\Program Files (x86)\Notepad++\notepad++.exe" $*
+npp="%ProgramFiles(x86)%\Notepad++\notepad++.exe" $*
 
 #=  Misc
 ps=powershell $*
-chrome="c:\Program Files (x86)\Google\Chrome\Application\chrome.exe" $*
+chrome="%ProgramFiles(x86)%\Google\Chrome\Application\chrome.exe" $*
 
 #= Next line clears out the "#" macro
 #=
