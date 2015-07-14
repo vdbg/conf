@@ -92,6 +92,10 @@ git_perso() {
 	git config --local user.email vdb_g@hotmail.com
 }
 
+git_prompt() {
+	. /etc/bash_completion.d/git-prompt 
+}
+
 git_nuke() {
 	git status
 	read -p "WARNING: NUKE everything under $PWD (y/n)? " answer
