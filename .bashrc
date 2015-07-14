@@ -8,7 +8,8 @@ elif [ "$(expr substr $(uname -s) 1 10)" == "MINGW32_NT" ]; then
     OS=Windows
 fi
 
-echo .bashrc $OS
+# printing stuff in .bashrc results in sftp failing
+# echo .bashrc $OS
 
 SSH_ENV=$HOME/.ssh/environment
 
