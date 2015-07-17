@@ -125,9 +125,14 @@ if [ "$OS" == "Linux" ]; then
 fi
 
 if [ -d "$HOME/Git" ]; then
-	alias dev="cd ~/Git"
+	export DEV_ROOT=~/git
 elif [ -d "/f/git" ]; then
-	alias dev="cd /f/git"
+	export DEV_ROOT=/f/git
 fi
 
+alias dev="cd $DEV_ROOT"
+
+export MY_CONF_ROOT=$DEV_ROOT/conf
+# Set vimrc's location and source it on vim startup
+export VIMINIT='let $MYVIMRC="$MY_CONF_ROOT/.vimrc" | source $MYVIMRC'
 
