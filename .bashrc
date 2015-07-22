@@ -132,7 +132,17 @@ fi
 
 alias dev="cd $DEV_ROOT"
 
+git_sync() {
+	for folder in docs prog conf
+	do
+		pushd $DEV_ROOT/$folder
+		git pull
+		popd
+	done
+}
+
 export MY_CONF_ROOT=$DEV_ROOT/conf
+export MYVIMRC=$MY_CONF_ROOT/.vimrc
 # Set vimrc's location and source it on vim startup
-export VIMINIT='let $MYVIMRC="$MY_CONF_ROOT/.vimrc" | source $MYVIMRC'
+export VIMINIT=':silent source "$MYVIMRC"'
 
