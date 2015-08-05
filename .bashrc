@@ -125,7 +125,7 @@ if [ "$OS" == "Linux" ]; then
 fi
 
 if [ -d "$HOME/Git" ]; then
-	export DEV_ROOT=~/git
+	export DEV_ROOT=~/Git
 elif [ -d "/f/git" ]; then
 	export DEV_ROOT=/f/git
 fi
