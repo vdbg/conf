@@ -125,7 +125,7 @@ if [ "$OS" == "Linux" ]; then
 fi
 
 if [ -d "$HOME/Git" ]; then
-	export DEV_ROOT=~/git
+	export DEV_ROOT=~/Git
 elif [ -d "/f/git" ]; then
 	export DEV_ROOT=/f/git
 fi
@@ -141,8 +141,25 @@ git_sync() {
 	done
 }
 
+git_status() {
+	pushd "$DEV_ROOT"
+	for dir in $(ls -d */);
+	do
+		echo
+		echo ====================================
+		echo Status in $dir:
+		cd $dir
+		git status
+		cd ..
+	done
+	popd
+}
+
 export MY_CONF_ROOT=$DEV_ROOT/conf
 export MYVIMRC=$MY_CONF_ROOT/.vimrc
 # Set vimrc's location and source it on vim startup
-export VIMINIT=':silent source "$MYVIMRC"'
+# VIMINIT does not always work
+# export VIMINIT=':silent source "$MYVIMRC"'
+[ ! -f ~/.vimrc ] && ln -s "$MYVIMRC" ~/.vimrc
+
 

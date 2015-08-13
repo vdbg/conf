@@ -1,6 +1,6 @@
 
 # Set CRAN mirror to a default location
-options(repos = "http://cran.cs.wwu.edu")
+options(repos = "http://cran.fhcrc.org")
 
 # R interactive prompt
 options(prompt="R> ")
