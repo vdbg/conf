@@ -4,6 +4,7 @@ msb64=msbuild /nr:false /m "/clp:verbosity=minimal;Summary" /fl /flp:Verbosity=n
 msb64r=msbuild /nr:false /m "/clp:verbosity=minimal;Summary" /fl /flp:Verbosity=normal /p:TreatWarningsAsErrors="true" /p:Configuration="Release" /p:Platform="x64" $*
 msbr=msbuild /nr:false /m "/clp:verbosity=minimal;Summary" /fl /flp:Verbosity=normal /p:TreatWarningsAsErrors="true" /p:Configuration="Release" $*
 msbca=msbuild /nr:false /m "/clp:verbosity=minimal;Summary" /fl /flp:Verbosity=normal /p:TreatWarningsAsErrors="true" /p:EnableCodeAnalysis=true $*
+msbdiag=msbuild /fl /flp:verbosity=diag /pp:diaglog.txt $*
 clean=msbuild /m /t:Clean $*
 
 
@@ -46,12 +47,25 @@ svna=svn add $*
 svnd=svn diff $*
 svn_nuke=@for /f "tokens=2,*" %I  IN ('svn status ^| findstr /bc:? ') DO @(if exist "%I" del /Q "%I" && if exist "%I" rmdir /s /q "%I" )
 
+#= tfs
+tfps=tf get /r . && tf status
+tfp=tf get
+tfd=tfsodd /w $*
+tflast=tf history . /r /noprompt /stopafter:1
+tf_nuke=tfpt scorch /noprompt /recursive $*
+tfco=tf checkout $*
+tfci=tf checkin $*
+tfa=tf add $*
+tfe=tf edit $*
+tfh=IF {$1} EQU {} ( start /b tf.exe history * /r )  ELSE ( start /b tf.exe history $* /r )
+
 #=  Search
 wh=where.exe $*
 f=findstr /npis $1 $2
 fs=findstr /npis /C:$1 $2
 rs=findstr /si $1 $2
 d=dir /s $1
+dsb=dir /s /b $*
 
 #=  VS
 vs12="%ProgramFiles(x86)%\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe" $*

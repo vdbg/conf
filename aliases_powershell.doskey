@@ -10,6 +10,7 @@ proot=Push-Location "${Env:USERPROFILE}\$1"
 
 #=  Search
 d=Get-ChildItem -Recurse $1
+dsb=gci -r $* | % { $.FullName }
 
 #=  VS
 vs12=. "${Env:ProgramFiles(x86)}\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe" $*
