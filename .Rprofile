@@ -34,6 +34,22 @@ testScaleRNumber <- function(nb, install = TRUE) {
     testScaleRPath (myRoot, install)
 }
 
+loadScaleR <- function(nb) {
+    if (is.na(nb) || 
+            ! is.vector(nb) || 
+            length(nb) != 1 || 
+            is.na(nb[1]) ||
+            ! is.numeric(nb) ) {
+        stop("expected nb to be a scalar character")
+    }
+    if (nb == 1)
+        myRoot <- "f:\\svn\\bigAnalytics\\trunk"
+    else
+        myRoot <- paste0("f:\\svn\\bigAnalytics",nb,"\\trunk")
+    Sys.setenv(RXSVNROOT = myRoot)
+    source(paste0(myRoot, "\\revoAnalytics\\init.R"))
+}
+
 testScaleRPath <- function(myRoot = Sys.getenv("RXSVNROOT"), install = TRUE, scaleR = "RevoScaleR_7.4.1.zip") {
     if (is.na(myRoot) || 
         ! is.vector(myRoot) || 
