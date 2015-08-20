@@ -8,6 +8,7 @@ call :add_path f:\git\prog\batch
 prompt $+$M$P$G
 
 set gitexe="%ProgramFiles(x86)%\Git\bin\git.exe"
+set SVN_EDITOR=notepad
 
 rem Red background if admin 
 cacls "%systemroot%\system32\config\system" > nul 2> nul && color 4F
