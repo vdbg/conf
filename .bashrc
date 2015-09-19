@@ -118,6 +118,7 @@ if [ "$OS" == "Windows" ]; then
 	alias n=notepad
 	alias npp='/c/Program\ Files\ \(x86\)/Notepad++/notepad++.exe'
 	alias chrome='/c/Program\ Files\ \(x86\)/Google/Chrome/Application/chrome.exe'
+	alias rstudio='/c/Program\ Files/RStudio/bin/rstudio.exe'
 fi
 if [ "$OS" == "Linux" ]; then
 	alias n=gedit
