@@ -76,6 +76,7 @@ vsdbg=if defined VisualStudioVersion "%ProgramFiles(x86)%\Microsoft Visual Studi
 #=  Editing
 n=notepad.exe $*
 npp="%ProgramFiles(x86)%\Notepad++\notepad++.exe" $*
+rstudio="%ProgramFiles%\RStudio\bin\rstudio.exe" $*
 
 #=  Misc
 ps=powershell $*
