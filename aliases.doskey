@@ -28,6 +28,7 @@ pdev=pushd "F:\git\$1"
 proot=pushd "%USERPROFILE%\$1"
 p\=pushd \
 pp=popd
+=exit
 
 #=  git
 git=%gitexe% $*
