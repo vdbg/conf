@@ -28,6 +28,7 @@ pdev=pushd "F:\git\$1"
 proot=pushd "%USERPROFILE%\$1"
 p\=pushd \
 pp=popd
+=exit
 
 #=  git
 git=%gitexe% $*
@@ -76,10 +77,13 @@ vsdbg=if defined VisualStudioVersion "%ProgramFiles(x86)%\Microsoft Visual Studi
 #=  Editing
 n=notepad.exe $*
 npp="%ProgramFiles(x86)%\Notepad++\notepad++.exe" $*
+rstudio="%ProgramFiles%\RStudio\bin\rstudio.exe" $*
 
 #=  Misc
 ps=powershell $*
 chrome="%ProgramFiles(x86)%\Google\Chrome\Application\chrome.exe" $*
+snip=SnippingTool.exe
+edge=explorer.exe shell:AppsFolder\Microsoft.MicrosoftEdge_8wekyb3d8bbwe!MicrosoftEdge
 
 #= Next line clears out the "#" macro
 #=
