@@ -4,7 +4,9 @@ if [ "$OS" == "Darwin" ]; then
     OS=Mac
 elif [ "$(expr substr $OS 1 5)" == "Linux" ]; then
     OS=Linux
-elif [ "$(expr substr $(uname -s) 1 10)" == "MINGW32_NT" ]; then
+elif [ "$(expr substr $OS 1 10)" == "MINGW32_NT" ]; then
+    OS=Windows
+elif [ "$(expr substr $OS 1 10)" == "MINGW64_NT" ]; then
     OS=Windows
 fi
 
@@ -19,7 +21,7 @@ SSH_ENV=$HOME/.ssh/environment
 # GIT_PS1_SHOWUNTRACKEDFILES=yes
 
 # Include the current e-mail in the prompt
-PS1='\[\033]0;$MSYSTEM:${PWD//[^[:ascii:]]/?}\007\]\n\[\033[32m\]\u@\h \[\033[33m\]\w$(__git_ps1  " [%s $(git config --get user.email)] ")\[\033[0m\]\n$ '
+PS1='\[\033]0;$MSYSTEM:${PWD//[^[:ascii:]]/?}\007\]\n\[\033[32m\]\u@\h \[\033[35m\]$MSYSTEM \[\033[33m\]\w\[\033[36m\]`__git_ps1 " (%s $(git config --get user.email)) "`\[\033[0m\]\n$ '
 
 # start the ssh-agent
 function start_agent {
