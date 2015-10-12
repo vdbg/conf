@@ -21,7 +21,7 @@ SSH_ENV=$HOME/.ssh/environment
 # GIT_PS1_SHOWUNTRACKEDFILES=yes
 
 # Include the current e-mail in the prompt
-PS1='\[\033]0;$MSYSTEM:${PWD//[^[:ascii:]]/?}\007\]\n\[\033[32m\]\u@\h \[\033[35m\]$MSYSTEM \[\033[33m\]\w\[\033[36m\]`__git_ps1 " (%s $(git config --get user.email)) "`\[\033[0m\]\n$ '
+PS1='\[\033]0;$MSYSTEM:${PWD//[^[:ascii:]]/?}\007\]\n\[\033[32m\]\u@\h \[\033[35m\]$MSYSTEM \[\033[33m\]\w\[\033[36m\]`__git_ps1 " (%s $(git config --get user.email)) "`\[\033[0m\]\n\$ '
 
 # start the ssh-agent
 function start_agent {
