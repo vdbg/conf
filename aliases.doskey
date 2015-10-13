@@ -31,14 +31,14 @@ pp=popd
 =exit
 
 #=  git
-git=%gitexe% $*
-gitp=%gitexe% pull $*
-gitpp=%gitexe% push $*
-gits=%gitexe% status $*
-gitc=%gitexe% commit $*
-gita=%gitexe% add $*
-gitd=%gitexe% diff $*
-gitu=%gitexe% checkout $*
+git="%gitexe%" $*
+gitp="%gitexe%" pull $*
+gitpp="%gitexe%" push $*
+gits="%gitexe%" status $*
+gitc="%gitexe%" commit $*
+gita="%gitexe%" add $*
+gitd="%gitexe%" diff $*
+gitu="%gitexe%" checkout $*
 
 #= svn
 svnam=svn status | findstr /b [M^|A]
