@@ -9,25 +9,29 @@ clean=msbuild /m /t:Clean $*
 
 
 #=  Navigation
+.=explorer .
 ..=cd ..\$1
-...=cd ..\..\$1
-....=cd ..\..\..\$1
-.....=cd ..\..\..\..\$1
-......=cd ..\..\..\..\..\$1
+..2=cd ..\..\$1
+..3=cd ..\..\..\$1
+..4=cd ..\..\..\..\$1
+..5=cd ..\..\..\..\..\$1
 desktop=cd /d "%USERPROFILE%\Desktop\$1"
 dev=cd /d "F:\git\$1"
-root=cd /d "%USERPROFILE%\$1"
+
 \=cd \
 p..=pushd ..\$1
-p...=pushd ..\..\$1
-p....=pushd ..\..\..\$1
-p.....=pushd ..\..\..\..\$1
-p......=pushd ..\..\..\..\..\$1
+p..2pushd ..\..\$1
+p..3=pushd ..\..\..\$1
+p..4=pushd ..\..\..\..\$1
+p..5=pushd ..\..\..\..\..\$1
 pdesktop=pushd "%USERPROFILE%\Desktop\$1"
 pdev=pushd "F:\git\$1"
 proot=pushd "%USERPROFILE%\$1"
 p\=pushd \
 pp=popd
+
+pwd=echo %cd%
+cdc=cd|clip & echo Copied current directory to clipboard.
 =exit
 
 #=  git
@@ -60,19 +64,51 @@ tfa=tf add $*
 tfe=tf edit $*
 tfh=IF {$1} EQU {} ( start /b tf.exe history * /r )  ELSE ( start /b tf.exe history $* /r )
 
+#= sd
+wlo=windiff -lo $*
+wlod=windiff -lodefault $*
+olo=odd -lo $*
+slo=sdvdiff -lo $*
+wlxs=windiff -L -XS $*
+
+
+sdp=sd sync $*
+sdpr=sd sync -w $* && sd resolve -am && sd revert -a && sd opened
+sde=sd edit $*
+sden=sd edit $* && notepad $*
+sda=sd add $*
+sds=sd opened $*
+sdsd=sd opened -c default $*
+sdd=windiff -lo $*
+sdop=for /f "delims=#" %i in ('sd opened -l $*') do @echo %i
+#= sdo=sd online $*
+sdu=sd changes -r -s pending -u %USERDOMAIN%\%USERNAME% $*
+sdgc=for /f "usebackq tokens=2" %c in ( `sd changes -u %USERDOMAIN%\%USERNAME% -s pending -r`) do ( sd change -d %~c )
+
+sdvu=sdv -u %USERDOMAIN%\%USERNAME% $*
+sdvs=sdv opened $*
+
+
 #=  Search
 wh=where.exe $*
 f=findstr /npis $1 $2
 fs=findstr /npis /C:$1 $2
 rs=findstr /si $1 $2
-d=dir /s $1
+ds=dir /s $*
 dsb=dir /s /b $*
 
 #=  VS
 vs12="%ProgramFiles(x86)%\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe" $*
+vs12e="%ProgramFiles(x86)%\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe" /Edit $*
 vs14="%ProgramFiles(x86)%\Microsoft Visual Studio 14.0\Common7\IDE\devenv.exe" $*
+vs14e="%ProgramFiles(x86)%\Microsoft Visual Studio 14.0\Common7\IDE\devenv.exe" /Edit $*
 vs=if defined VisualStudioVersion "%ProgramFiles(x86)%\Microsoft Visual Studio %VisualStudioVersion%\Common7\IDE\devenv.exe" $*
+vse=if defined VisualStudioVersion "%ProgramFiles(x86)%\Microsoft Visual Studio %VisualStudioVersion%\Common7\IDE\devenv.exe" /Edit $*
+
 vsdbg=if defined VisualStudioVersion "%ProgramFiles(x86)%\Microsoft Visual Studio %VisualStudioVersion%\Common7\IDE\devenv.exe" /debugexe $*
+vstest="%ProgramFiles(x86)%\microsoft visual studio 12.0\Common7\IDE\CommonExtensions\Microsoft\TestWindow\vstest.console.exe" $*
+
+code="%ProgramFiles(x86)%\Microsoft VS Code\bin\code.cmd" . $*
 
 #=  Editing
 n=notepad.exe $*
@@ -81,9 +117,24 @@ rstudio="%ProgramFiles%\RStudio\bin\rstudio.exe" $*
 
 #=  Misc
 ps=powershell $*
+psise=powershell_ise.exe $*
+
+ie=iexplore.exe $*
+iep=iexplore.exe -private $*
+
 chrome="%ProgramFiles(x86)%\Google\Chrome\Application\chrome.exe" $*
-snip=SnippingTool.exe
+chromep="%ProgramFiles(x86)%\Google\Chrome\Application\chrome.exe" --incognito $*
+
 edge=explorer.exe shell:AppsFolder\Microsoft.MicrosoftEdge_8wekyb3d8bbwe!MicrosoftEdge
+
+snip=SnippingTool.exe
+
+xxcopy=xcopy /verifyk $*
+windbg=if exist %SystemDrive%\debuggers\windbg.exe ( %SystemDrive%\debuggers\windbg.exe $* ) else ( windbg.exe $* )
+
+hosts=notepad "%SystemRoot%\system32\drivers\etc\hosts"
+
+rw=attrib -r $*
 
 #= Next line clears out the "#" macro
 #=
