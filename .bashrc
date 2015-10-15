@@ -84,6 +84,7 @@ alias gitc='git commit'
 alias gita='git add'
 alias gitd='git diff'
 alias gitu='git checkout'
+alias gitm='git mergetool'
 
 git_work() {
 	git config --local user.name "Grégory Vandenbrouck"

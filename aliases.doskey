@@ -44,6 +44,7 @@ gitc="%gitexe%" commit $*
 gita="%gitexe%" add $*
 gitd="%gitexe%" diff $*
 gitu="%gitexe%" checkout $*
+gitm="%gitexe%" mergetool $*
 
 #= svn
 svnam=svn status | findstr /b [M^|A]
@@ -79,6 +80,7 @@ sde=sd edit $*
 sden=sd edit $* && notepad $*
 sda=sd add $*
 sds=sd opened $*
+sdm=sd resolve -am $*
 sdsd=sd opened -c default $*
 sdd=windiff -lo $*
 sdop=for /f "delims=#" %i in ('sd opened -l $*') do @echo %i
