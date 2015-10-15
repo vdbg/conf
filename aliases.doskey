@@ -20,7 +20,7 @@ dev=cd /d "F:\git\$1"
 
 \=cd \
 p..=pushd ..\$1
-p..2pushd ..\..\$1
+p..2=pushd ..\..\$1
 p..3=pushd ..\..\..\$1
 p..4=pushd ..\..\..\..\$1
 p..5=pushd ..\..\..\..\..\$1
@@ -33,6 +33,7 @@ pp=popd
 pwd=echo %cd%
 cdc=cd|clip & echo Copied current directory to clipboard.
 =exit
+=cls
 
 #=  git
 git="%gitexe%" $*
@@ -119,8 +120,8 @@ rstudio="%ProgramFiles%\RStudio\bin\rstudio.exe" $*
 ps=powershell $*
 psise=powershell_ise.exe $*
 
-ie=iexplore.exe $*
-iep=iexplore.exe -private $*
+ie="%ProgramFiles%\Internet Explorer\iexplore.exe" $*
+iep="%ProgramFiles%\Internet Explorer\iexplore.exe" -private $*
 
 chrome="%ProgramFiles(x86)%\Google\Chrome\Application\chrome.exe" $*
 chromep="%ProgramFiles(x86)%\Google\Chrome\Application\chrome.exe" --incognito $*
