@@ -137,12 +137,15 @@ fi
 alias dev="cd $DEV_ROOT"
 
 git_sync() {
-	for folder in docs prog conf
+	pushd "$DEV_ROOT"
+	for dir in $(ls -d */);
 	do
-		pushd $DEV_ROOT/$folder
+		echo Syncing $dir ...
+		cd $dir
 		git pull
-		popd
+		cd ..
 	done
+	popd
 }
 
 git_status() {
@@ -157,6 +160,10 @@ git_status() {
 		cd ..
 	done
 	popd
+}
+
+git_wincred() {
+	git config --local credential.helper wincred
 }
 
 export MY_CONF_ROOT=$DEV_ROOT/conf
