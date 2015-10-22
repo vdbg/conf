@@ -78,6 +78,7 @@ sdp=sd sync $*
 sdpr=sd sync -w $* && sd resolve -am && sd revert -a && sd opened
 sde=sd edit $*
 sden=sd edit $* && notepad $*
+sdenp=sd edit $* && "%ProgramFiles(x86)%\Notepad++\notepad++.exe" $*
 sda=sd add $*
 sds=sd opened $*
 sdm=sd resolve -am $*
