@@ -24,3 +24,7 @@ function LoadReadline() {
 }
 
 $Env:gitexe="C:\Program Files (x86)\Git\bin\git.exe"
+
+function b64ToHex($str) {
+    [System.BitConverter]::ToString([System.Convert]::FromBase64String($str)).Replace("-", "")
+}
