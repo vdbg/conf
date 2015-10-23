@@ -95,9 +95,8 @@ sdvs=sdv opened $*
 
 #=  Search
 wh=where.exe $*
-f=findstr /npis $1 $2
-fs=findstr /npis /C:$1 $2
-rs=findstr /si $1 $2
+f=findstr /npis $*
+fs=findstr /npisc:$*
 ds=dir /s $*
 dsb=dir /s /b $*
 
