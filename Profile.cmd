@@ -9,6 +9,10 @@ prompt $+$M$P$G
 
 call :set_if_exists gitexe "%ProgramFiles%\Git\bin\git.exe"
 call :set_if_exists gitexe "%ProgramFiles(x86)%\Git\bin\git.exe"
+call :set_if_not_set gitexe git
+
+call :set_if_exists pyexe "%ProgramFiles(x86)%\Python 3.5\python.exe"
+call :set_if_not_set pyexe python
  
 set SVN_EDITOR=notepad
 
@@ -31,5 +35,10 @@ goto :eof
 :set_if_exists
 	if defined %1 goto :eof
 	if not exist "%~2" goto :eof
+	set %1=%~2
+	goto :eof
+
+:set_if_not_set
+	if defined %1 goto :eof
 	set %1=%~2
 	goto :eof

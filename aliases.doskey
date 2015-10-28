@@ -120,6 +120,7 @@ rstudio="%ProgramFiles%\RStudio\bin\rstudio.exe" $*
 
 #=  Misc
 ps=powershell $*
+py="%pyexe%" $*
 psise=powershell_ise.exe $*
 
 ie="%ProgramFiles%\Internet Explorer\iexplore.exe" $*
