@@ -87,7 +87,7 @@ sdd=windiff -lo $*
 sdop=for /f "delims=#" %i in ('sd opened -l $*') do @echo %i
 #= sdo=sd online $*
 sdu=sd changes -r -s pending -u %USERDOMAIN%\%USERNAME% $*
-sdgc=for /f "usebackq tokens=2" %c in ( `sd changes -u %USERDOMAIN%\%USERNAME% -s pending -r`) do ( sd change -d %~c )
+sdgc=for /f "usebackq tokens=2" %c in ( `sd changes -m 20 -u %USERDOMAIN%\%USERNAME% -s pending -r`) do @sd change -d %~c
 
 sdvu=sdv -u %USERDOMAIN%\%USERNAME% $*
 sdvs=sdv opened $*
