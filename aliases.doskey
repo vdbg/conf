@@ -132,6 +132,7 @@ chromep="%ProgramFiles(x86)%\Google\Chrome\Application\chrome.exe" --incognito $
 edge=explorer.exe shell:AppsFolder\Microsoft.MicrosoftEdge_8wekyb3d8bbwe!MicrosoftEdge
 
 snip=SnippingTool.exe
+stylecope="C:\Program Files (x86)\StyleCop 4.7\StyleCopSettingsEditor.exe" $*
 
 xxcopy=xcopy /verifyk $*
 windbg=if exist %SystemDrive%\debuggers\windbg.exe ( %SystemDrive%\debuggers\windbg.exe $* ) else ( windbg.exe $* )

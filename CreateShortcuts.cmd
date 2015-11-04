@@ -20,6 +20,9 @@ rem Azure
 set azureps=%ProgramFiles(x86)%\Microsoft SDKs\Azure\PowerShell\ServiceManagement\Azure\Services\ShortcutStartup.ps1
 if exist "%azureps%" call :createShortcut AzurePS "%ps%" "%wdir%" "-NoExit -ExecutionPolicy Bypass -File '%azureps%' "
 
+rem Exchange
+call :copyExchange
+
 goto :eof
 
 :addVS
@@ -42,6 +45,14 @@ goto :eof
 	goto :eof
 
 
+:copyExchange
+	set exch_src=%ALLUSERSPROFILE%\Microsoft\Windows\Start Menu\programs\Microsoft Exchange Server 2016\Exchange Management Shell.lnk
+	if not exist "%exch_src%" goto :eof
+	set exch_dst=%Shells%\Exchange.lnk
+	echo Creating %exch_dst%
+	copy /y "%exch_src%" "%exch_dst%" > nul
+	echo.	DONE
+	goto :eof
 
 	
 	
