@@ -78,7 +78,7 @@ sdp=sd sync $*
 sdpr=sd sync -w $* && sd resolve -am && sd revert -a && sd opened
 sde=sd edit $*
 sden=sd edit $* && notepad $*
-sdenp=sd edit $* && "%ProgramFiles(x86)%\Notepad++\notepad++.exe" $*
+sdenp=sd edit $* && "%nppexe%" $*
 sda=sd add $*
 sds=sd opened $*
 sdm=sd resolve -am $*
@@ -115,7 +115,7 @@ code="%ProgramFiles(x86)%\Microsoft VS Code\bin\code.cmd" . $*
 
 #=  Editing
 n=notepad.exe $*
-npp="%ProgramFiles(x86)%\Notepad++\notepad++.exe" $*
+npp="%nppexe%" $*
 rstudio="%ProgramFiles%\RStudio\bin\rstudio.exe" $*
 
 #=  Misc
@@ -131,11 +131,13 @@ chromep="%ProgramFiles(x86)%\Google\Chrome\Application\chrome.exe" --incognito $
 
 edge=explorer.exe shell:AppsFolder\Microsoft.MicrosoftEdge_8wekyb3d8bbwe!MicrosoftEdge
 
-snip=SnippingTool.exe
-stylecope="C:\Program Files (x86)\StyleCop 4.7\StyleCopSettingsEditor.exe" $*
+snip="%WINDIR%\system32\snippingtool.exe" $*
+stylecopedit="%stylecopeditorexe%" $*
+fiddler="%ProgramFiles(x86)%\Fiddler2\Fiddler.exe" $*
+ewseditor="%ewseditorexe%" $*
 
 xxcopy=xcopy /verifyk $*
-windbg=if exist %SystemDrive%\debuggers\windbg.exe ( %SystemDrive%\debuggers\windbg.exe $* ) else ( windbg.exe $* )
+windbg="%windbgexe%" $*
 
 hosts=notepad "%SystemRoot%\system32\drivers\etc\hosts"
 
