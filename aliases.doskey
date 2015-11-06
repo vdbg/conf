@@ -119,6 +119,7 @@ npp="%nppexe%" $*
 rstudio="%ProgramFiles%\RStudio\bin\rstudio.exe" $*
 
 #=  Misc
+mv=move $*
 ps=powershell $*
 py="%pyexe%" $*
 psise=powershell_ise.exe $*
