@@ -3,6 +3,7 @@ if defined profile_loaded goto :eof
 set profile_loaded=true
 
 call :add_path %~d0\apps\bin
+call :add_path %~d0\apps\bin\sysinternals
 call :add_path %~d0\git\prog\batch
 
 prompt $+$M$P$G
@@ -17,6 +18,7 @@ call :set_if_exists windbgexe "%SystemDrive%\debuggers\windbg.exe" windbg.exe
 call :set_if_exists ewseditorexe "%~d0\Apps\EWSEditor 1.13 - bin\EWSEditor.exe" ewseditor.exe
 call :set_if_exists stylecopeditorexe "%ProgramFiles(x86)%\StyleCop 4.7\StyleCopSettingsEditor.exe" StyleCopSettingsEditor.exe
 call :set_if_exists fiddlerexe "%ProgramFiles(x86)%\Fiddler2\Fiddler.exe" fiddler.exe
+call :set_if_exists ilspyexe "%~d0\Apps\ILSpy\ILSpy.exe" ilspy.exe
 
 set SVN_EDITOR=notepad
 

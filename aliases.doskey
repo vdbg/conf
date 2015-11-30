@@ -136,6 +136,7 @@ snip="%WINDIR%\system32\snippingtool.exe" $*
 stylecopedit="%stylecopeditorexe%" $*
 fiddler="%ProgramFiles(x86)%\Fiddler2\Fiddler.exe" $*
 ewseditor="%ewseditorexe%" $*
+ilspy="%ilspyexe%" $*
 
 xxcopy=xcopy /verifyk $*
 windbg="%windbgexe%" $*
