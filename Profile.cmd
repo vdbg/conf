@@ -19,6 +19,7 @@ call :set_if_exists ewseditorexe "%~d0\Apps\EWSEditor 1.13 - bin\EWSEditor.exe" 
 call :set_if_exists stylecopeditorexe "%ProgramFiles(x86)%\StyleCop 4.7\StyleCopSettingsEditor.exe" StyleCopSettingsEditor.exe
 call :set_if_exists fiddlerexe "%ProgramFiles(x86)%\Fiddler2\Fiddler.exe" fiddler.exe
 call :set_if_exists ilspyexe "%~d0\Apps\ILSpy\ILSpy.exe" ilspy.exe
+call :set_if_exists xtsexe "%~d0\Apps\xts\xts.exe" xts.exe
 
 set SVN_EDITOR=notepad
 
