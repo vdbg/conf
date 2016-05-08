@@ -1,8 +1,10 @@
-$psget = Join-Path $([System.IO.Path]::GetDirectoryName($Profile)) "Modules\PsGet\PsGet.psm1"
-if (Test-Path $psget) {
-	Import-Module $psget
-} else {
-	(new-object Net.WebClient).DownloadString("http://psget.net/GetPsGet.ps1") | Invoke-Expression
+function DownloadReadline() {
+	$psget = Join-Path $([System.IO.Path]::GetDirectoryName($Profile)) "Modules\PsGet\PsGet.psm1"
+	if (Test-Path $psget) {
+		Import-Module $psget
+	} else {
+		(new-object Net.WebClient).DownloadString("http://psget.net/GetPsGet.ps1") | Invoke-Expression
+	}
 }
 
 function LoadMacros($file) {
@@ -10,9 +12,6 @@ function LoadMacros($file) {
 		doskey /EXENAME=PowerShell.exe /MACROFILE="$PSScriptRoot\$file"
 	}
 }
-
-LoadMacros("aliases.doskey") 
-LoadMacros("aliases_powershell.doskey") 
 
 # Not loading by default as it breaks doskey
 function LoadReadline() {
@@ -23,8 +22,18 @@ function LoadReadline() {
 	Set-PSReadlineKeyHandler -Key 'Ctrl+u' -Function BackwardKillLine
 }
 
-$Env:gitexe="C:\Program Files (x86)\Git\bin\git.exe"
-
 function b64ToHex($str) {
     [System.BitConverter]::ToString([System.Convert]::FromBase64String($str)).Replace("-", "")
 }
+
+$Env:gitexe="C:\Program Files (x86)\Git\bin\git.exe"
+LoadMacros "aliases.doskey"
+LoadMacros "aliases_powershell.doskey"
+
+$script = Join-Path "$PSScriptRoot\..\prog\PS" "$env:ComputerName.ps1"
+if (Test-Path $script) {
+	Write-Host "Loading $script"
+	. $script
+}
+Remove-Variable script
+
