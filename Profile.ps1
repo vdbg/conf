@@ -26,9 +26,16 @@ function b64ToHex($str) {
     [System.BitConverter]::ToString([System.Convert]::FromBase64String($str)).Replace("-", "")
 }
 
-$Env:gitexe="C:\Program Files (x86)\Git\bin\git.exe"
+function Add-Path($path) {
+	if (Test-Path $path) {
+		$env:path = "$path;" + $env:path
+	}
+}
+
 LoadMacros "aliases.doskey"
 LoadMacros "aliases_powershell.doskey"
+
+Add-Path "$PSScriptRoot\..\..\Apps\bin"
 
 $script = Join-Path "$PSScriptRoot\..\prog\PS" "$env:ComputerName.ps1"
 if (Test-Path $script) {

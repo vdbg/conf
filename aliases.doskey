@@ -36,15 +36,14 @@ cdc=cd|clip & echo Copied current directory to clipboard.
 =cls
 
 #=  git
-git="%gitexe%" $*
-gitp="%gitexe%" pull $*
-gitpp="%gitexe%" push $*
-gits="%gitexe%" status $*
-gitc="%gitexe%" commit $*
-gita="%gitexe%" add $*
-gitd="%gitexe%" diff $*
-gitu="%gitexe%" checkout $*
-gitm="%gitexe%" mergetool $*
+gitp=git pull $*
+gitpp=git push $*
+gits=git status $*
+gitc=git commit $*
+gita=git add $*
+gitd=git diff $*
+gitu=git checkout $*
+gitm=git mergetool $*
 
 #= svn
 svnam=svn status | findstr /b [M^|A]
@@ -78,7 +77,7 @@ sdp=sd sync $*
 sdpr=sd sync -w $* && sd resolve -am && sd revert -a && sd opened
 sde=sd edit $*
 sden=sd edit $* && notepad $*
-sdenp=sd edit $* && "%nppexe%" $*
+sdenp=sd edit $* && npp $*
 sda=sd add $*
 sds=sd opened $*
 sdm=sd resolve -am $*
@@ -115,32 +114,19 @@ code="%ProgramFiles(x86)%\Microsoft VS Code\bin\code.cmd" . $*
 
 #=  Editing
 n=notepad.exe $*
-npp="%nppexe%" $*
 rstudio="%ProgramFiles%\RStudio\bin\rstudio.exe" $*
 
 #=  Misc
 mv=move $*
 ps=powershell $*
-py="%pyexe%" $*
 psise=powershell_ise.exe $*
 
-ie="%ProgramFiles%\Internet Explorer\iexplore.exe" $*
-iep="%ProgramFiles%\Internet Explorer\iexplore.exe" -private $*
-
-chrome="%ProgramFiles(x86)%\Google\Chrome\Application\chrome.exe" $*
-chromep="%ProgramFiles(x86)%\Google\Chrome\Application\chrome.exe" --incognito $*
+iep=ie -private $*
+chromep=chrome --incognito $*
 
 edge=explorer.exe shell:AppsFolder\Microsoft.MicrosoftEdge_8wekyb3d8bbwe!MicrosoftEdge
 
-snip="%WINDIR%\system32\snippingtool.exe" $*
-stylecopedit="%stylecopeditorexe%" $*
-fiddler="%ProgramFiles(x86)%\Fiddler2\Fiddler.exe" $*
-ewseditor="%ewseditorexe%" $*
-ilspy="%ilspyexe%" $*
-xts="%xtsexe%" $*
-
 xxcopy=xcopy /verifyk $*
-windbg="%windbgexe%" $*
 
 hosts=notepad "%SystemRoot%\system32\drivers\etc\hosts"
 

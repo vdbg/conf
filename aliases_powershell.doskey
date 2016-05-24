@@ -19,21 +19,19 @@ vs=if (test-path env:\VisualStudioVersion) { . "${Env:ProgramFiles(x86)}\Microso
 
 #=  Editing
 n=. notepad $*
-npp=. "c:\Program Files (x86)\Notepad++\notepad++.exe" $*
 
 #=  TFS
 tfed=tf edit $* ; . notepad $*
-tfedn=tf edit $* ; . "c:\Program Files (x86)\Notepad++\notepad++.exe" $*
+tfedn=tf edit $* ; . npp $*
 tfh=if ( '$1' -eq '' ) { start tf.exe -NoNewWindow -ArgumentList 'history * /r' } else { start tf.exe -NoNewWindow -ArgumentList 'history $* /r' }
 
-git=. $Env:gitexe $*
-gitp=. $Env:gitexe pull $*
-gitpp=. $Env:gitexe push $*
-gits=. $Env:gitexe status $*
-gitc=. $Env:gitexe commit $*
-gita=. $Env:gitexe add $*
-gitd=. $Env:gitexe diff $*
-gitu=. $Env:gitexe checkout $*
+gitp=. git pull $*
+gitpp=. git push $*
+gits=. git status $*
+gitc=. git commit $*
+gita=. git add $*
+gitd=. git diff $*
+gitu=. git checkout $*
 
 #= Next line clears out the "#" macro
 #=
