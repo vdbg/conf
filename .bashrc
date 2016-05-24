@@ -3,8 +3,8 @@
 
 # If not running interactively, don't do anything
 case $- in
-    *i*) ;;
-      *) return;;
+	*i*) ;;
+	  *) return;;
 esac
 
 ## History settings
@@ -24,13 +24,13 @@ HISTFILESIZE=2000
 OS=$(uname -s)
 
 if [ "$OS" == "Darwin" ]; then
-    OS=Mac
+	OS=Mac
 elif [ "$(expr substr $OS 1 5)" == "Linux" ]; then
-    OS=Linux
+	OS=Linux
 elif [ "$(expr substr $OS 1 10)" == "MINGW32_NT" ]; then
-    OS=Windows
+	OS=Windows
 elif [ "$(expr substr $OS 1 10)" == "MINGW64_NT" ]; then
-    OS=Windows
+	OS=Windows
 fi
 
 # printing stuff in .bashrc results in sftp failing
@@ -68,31 +68,28 @@ if [ "$OS" == "Windows" ]; then
 	fi
 fi
 
-if [ -d "$HOME/bin" ]; then
-	PATH=$HOME/bin:$PATH
-fi
+add_path() {
+	if [ -d "$1" ]; then
+		PATH=$1:$PATH
+	fi
+}
 
-if [ -d "$HOME/algs4/bin" ]; then
-	PATH=$PATH:$HOME/algs4/bin
-fi
+add_alias() {
+	if command -v $2 > /dev/null 2>&1; then
+		alias $1="$2"
+	fi
+}
 
-if [ -d "/f/apps/bin" ]; then
-	PATH=$PATH:/f/apps/bin
-fi
-
-if [ "$OS" == "Linux" -a $UID -ne 0 ]; then
-    alias reboot='sudo reboot'
-    alias update='sudo apt-get upgrade'
-fi
-
-
+add_path "$HOME/bin"
+add_path "$HOME/algs4/bin" 
+add_path "/f/apps/bin"
 
 ##
 ## Aliases
 ##
 
+
 alias ..='cd ..'
-alias cd..='cd ..'
 alias ...='cd ../../../'
 alias ....='cd ../../../../'
 alias root='cd ~'
@@ -142,13 +139,18 @@ git_nuke() {
 
 if [ "$OS" == "Windows" ]; then
 	alias n=notepad
-	alias npp='/c/Program\ Files\ \(x86\)/Notepad++/notepad++.exe'
-	alias chrome='/c/Program\ Files\ \(x86\)/Google/Chrome/Application/chrome.exe'
-	alias rstudio='/c/Program\ Files/RStudio/bin/rstudio.exe'
+	add_alias npp '/c/Program\ Files\ \(x86\)/Notepad++/notepad++.exe'
+	add_alias chrome '/c/Program\ Files\ \(x86\)/Google/Chrome/Application/chrome.exe'
+	add_alias rstudio '/c/Program\ Files/RStudio/bin/rstudio.exe'
 fi
 if [ "$OS" == "Linux" ]; then
-	alias n=gedit
-	alias npp=gvim
+	add_alias n gedit
+	add_alias npp gvim
+	add_alias mstsc remmina
+fi
+if [ "$OS" == "Linux" -a $UID -ne 0 ]; then
+	alias reboot='sudo reboot'
+	alias update='sudo apt-get upgrade'
 fi
 
 if [ -d "$HOME/Git" ]; then
