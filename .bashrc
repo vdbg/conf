@@ -147,6 +147,11 @@ if [ "$OS" == "Linux" ]; then
 	add_alias n gedit
 	add_alias npp gvim
 	add_alias mstsc remmina
+
+	if [ "${0:0}" != "-" ]; then
+		# not a login shell, therefore lacking git completion
+		[ -f /etc/bash_completion.d/git-prompt ] && . /etc/bash_completion.d/git-prompt 
+	fi
 fi
 if [ "$OS" == "Linux" -a $UID -ne 0 ]; then
 	alias reboot='sudo reboot'
