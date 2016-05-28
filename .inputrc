@@ -1,0 +1,17 @@
+# Equivalent to F8 in windows: PgUp, PgDwn to map to search history
+"\e[5~": history-search-backward
+"\e[6~": history-search-forward
+
+# display all 
+set show-all-if-ambiguous on
+set show-all-if-unmodified on
+
+# Append / to directories
+set mark-directories on
+set mark-symlinked-directories on 
+
+# OMG. Thx!!
+set completion-ignore-case on 
+
+
+
