@@ -77,6 +77,7 @@ add_path() {
 add_alias() {
 	if command -v "$2" > /dev/null 2>&1; then
 		# handle spaces and parenthesis: test command wants them non escaped while alias command needs them escaped
+		command=$2
 		command=${command// /\\ }
 		command=${command//\(/\\\(}
 		command=${command//\)/\\\)}
