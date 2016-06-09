@@ -154,6 +154,7 @@ fi
 if [ "$OS" == "Linux" ]; then
 	add_alias n gedit
 	add_alias npp gvim
+	add_alias chrome chromium-browser 
 	add_alias mstsc remmina
 	add_alias snip shutter
 
