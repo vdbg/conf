@@ -2,6 +2,8 @@
 setlocal
 
 set target_root=f:\apps\bin
+call :ensure_target || exit /b 1
+
 call :set_link false git			"%ProgramFiles%\Git\mingw64\bin\git.exe" "%ProgramFiles%\Git\bin\git.exe" "%ProgramFiles(x86)%\Git\bin\git.exe" 
 call :set_link false py			"%ProgramFiles(x86)%\Python 3.5\python.exe" "%ProgramFiles(x86)%\Python35-32\python.exe" 
 call :set_link true npp			"%ProgramFiles(x86)%\Notepad++\notepad++.exe" "%windir%\system32\notepad.exe" "%windir%\notepad.exe"
@@ -16,6 +18,12 @@ call :set_link true xts			"%~d0\Apps\xts\xts.exe"
 call :set_link true chrome		"%ProgramFiles(x86)%\Google\Chrome\Application\chrome.exe"
 
 goto :eof
+
+:ensure_target
+	if exist "%target_root%" exit /b 0
+	mkdir "%target_root%"
+	if not exist "%target_root%" exit /b 1
+	exit /b 0
 
 :set_link
 	set is_ui=%~1
