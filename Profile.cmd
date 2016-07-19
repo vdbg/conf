@@ -18,6 +18,7 @@ if exist "%~dp0\aliases.doskey" doskey /EXENAME=cmd.exe /MACROFILE="%~dp0\aliase
 call :set_if_exists RHOME "%ProgramFiles%\R\R-3.2.2"
 call :set_if_exists RHOME "%ProgramFiles%\R\R-3.1.3"
 if defined RHOME call :add_path "%RHOME%\bin\x64"
+if defined NugetMachineInstallRoot set Corext_CleanCacheOnInitAge=0
 
 goto :eof
 

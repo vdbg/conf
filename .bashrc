@@ -75,8 +75,14 @@ add_path() {
 }
 
 add_alias() {
-	if command -v $2 > /dev/null 2>&1; then
-		alias $1="$2"
+	if command -v "$2" > /dev/null 2>&1; then
+		# handle spaces and parenthesis: test command wants them non escaped while alias command needs them escaped
+		command=$2
+		command=${command// /\\ }
+		command=${command//\(/\\\(}
+		command=${command//\)/\\\)}
+
+		alias $1="$command"
 	fi
 }
 
@@ -107,6 +113,8 @@ alias gita='git add'
 alias gitd='git diff'
 alias gitu='git checkout'
 alias gitm='git mergetool'
+
+alias xssh='ssh -XC -c blowfish-cbc'
 
 git_work() {
 	git config --local user.name "Grégory Vandenbrouck"
@@ -140,15 +148,17 @@ git_nuke() {
 }
 
 if [ "$OS" == "Windows" ]; then
-	alias n=notepad
-	add_alias npp '/c/Program\ Files\ \(x86\)/Notepad++/notepad++.exe'
-	add_alias chrome '/c/Program\ Files\ \(x86\)/Google/Chrome/Application/chrome.exe'
-	add_alias rstudio '/c/Program\ Files/RStudio/bin/rstudio.exe'
+	alias n=notepad.exe
+	add_alias npp '/c/Program Files (x86)/Notepad++/notepad++.exe'
+	add_alias chrome '/c/Program Files (x86)/Google/Chrome/Application/chrome.exe'
+	add_alias rstudio '/c/Program Files/RStudio/bin/rstudio.exe'
+	alias snip=snippingtool.exe
 fi
 if [ "$OS" == "Linux" ]; then
 	add_alias n gedit
 	add_alias npp gvim
 	add_alias mstsc remmina
+	add_alias snip shutter
 
 	if [ "${0:0}" != "-" ]; then
 		# not a login shell, therefore lacking git completion
