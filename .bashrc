@@ -111,6 +111,7 @@ alias gits='git status'
 alias gitc='git commit'
 alias gita='git add'
 alias gitd='git diff'
+alias gitdr='git diff --cached origin/master'
 alias gitu='git checkout'
 alias gitm='git mergetool'
 
