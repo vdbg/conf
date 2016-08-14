@@ -102,6 +102,8 @@ alias root='cd ~'
 alias desktop='cd ~/Desktop'
 alias cls=clear
 alias dir='ls -AlF'
+alias dsb='find . -name $1'
+alias mkcd='_(){ mkdir -p $1; cd $1; }; _'
 
 alias gitp='git pull'
 alias gitpp='git push'
