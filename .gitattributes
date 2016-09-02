@@ -1,0 +1,5 @@
+
+# Although these are all scripts/text files, don't try and normalize their line endings
+# because each one is already properly normalized for its target OS.
+
+* -text
