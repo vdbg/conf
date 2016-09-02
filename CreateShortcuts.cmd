@@ -9,12 +9,15 @@ rem VS
 for /F "tokens=1,* delims==" %%I in ( 'set VS ^| findstr COMNTOOLS' ) do call :addVS "%%I" "%%J"
 
 rem cmd
-call :createShortcut cmd64 "%comspec%" "%~d0"
-call :createShortcut cmd32 "%WINDIR%\SysWOW64\cmd.exe" "%~d0"
+call :createShortcut cmd64 "%comspec%" "%wdir%"
+call :createShortcut cmd32 "%WINDIR%\SysWOW64\cmd.exe" "%wdir%"
 
 rem PS
 set ps="%windir%\system32\WindowsPowerShell\v1.0\powershell.exe"
-call :createShortcut PS "%ps%" "%~d0" 
+call :createShortcut PS "%ps%" "%wdir%"
+
+rem Git
+call :createShortcut "Git Bash" "%ProgramFiles%\Git\git-bash.exe" "%wdir%" --cd-to-home
 
 rem Azure
 set azureps=%ProgramFiles(x86)%\Microsoft SDKs\Azure\PowerShell\ServiceManagement\Azure\Services\ShortcutStartup.ps1
