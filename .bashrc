@@ -169,7 +169,8 @@ if [ "$OS" == "Linux" ]; then
 fi
 if [ "$OS" == "Linux" -a $UID -ne 0 ]; then
 	alias reboot='sudo reboot'
-	alias update='sudo apt-get upgrade'
+	alias update="sudo -- sh -c 'apt-get update && apt-get dist-upgrade -y && apt autoremove -y && pglcmd update'"
+
 fi
 
 if [ -d "$HOME/Git" ]; then
