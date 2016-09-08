@@ -7,6 +7,12 @@ msbca=msbuild /nr:false /m "/clp:verbosity=minimal;Summary" /fl /flp:Verbosity=n
 msbdiag=msbuild /fl /flp:verbosity=diag /pp:diaglog.txt $*
 clean=msbuild /m /t:Clean $*
 
+terr=type buildd.err
+twrn=type buildd.wrn
+nerr=notepad buildd.err
+nperr=npp buildd.err
+nwrn=notepad buildd.wrn
+nlog=notepad buildd.log
 
 #=  Navigation
 .=explorer .
@@ -131,6 +137,8 @@ xxcopy=xcopy /verifyk $*
 hosts=notepad "%SystemRoot%\system32\drivers\etc\hosts"
 
 rw=attrib -r $*
+
+aliasf=doskey /macros | findstr $*
 
 #= Next line clears out the "#" macro
 #=
