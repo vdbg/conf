@@ -1,6 +1,21 @@
 @echo off
 
 setlocal
+
+set force=no
+
+if "%~2" neq "" goto :badArgs
+if "%~1" equ "" goto :doneArgs
+
+if /i "%~1" equ "--force" (
+	set force=yes
+	goto :doneArgs
+)
+
+goto :badArgs
+
+:doneArgs
+
 set Shells=%~d0\Shell
 set wdir=%~d0
 if not exist "%Shells%" mkdir "%Shells%"
@@ -9,22 +24,25 @@ rem VS
 for /F "tokens=1,* delims==" %%I in ( 'set VS ^| findstr COMNTOOLS' ) do call :addVS "%%I" "%%J"
 
 rem cmd
-call :createShortcut cmd64 "%comspec%" "%wdir%"
-call :createShortcut cmd32 "%WINDIR%\SysWOW64\cmd.exe" "%wdir%"
+call :createShortcut cmd64 "%comspec%"
+call :createShortcut cmd32 "%WINDIR%\SysWOW64\cmd.exe"
 
 rem PS
 set ps="%windir%\system32\WindowsPowerShell\v1.0\powershell.exe"
-call :createShortcut PS "%ps%" "%wdir%"
+call :createShortcut PS "%ps%"
 
 rem Git
-call :createShortcut "Git Bash" "%ProgramFiles%\Git\git-bash.exe" "%wdir%" --cd-to-home
+call :createShortcut "Git Bash" "%ProgramFiles%\Git\git-bash.exe" --cd-to-home
 
 rem Azure
 set azureps=%ProgramFiles(x86)%\Microsoft SDKs\Azure\PowerShell\ServiceManagement\Azure\Services\ShortcutStartup.ps1
-if exist "%azureps%" call :createShortcut AzurePS "%ps%" "%wdir%" "-NoExit -ExecutionPolicy Bypass -File '%azureps%' "
+if exist "%azureps%" call :createShortcut AzurePS "%ps%" "-NoExit -ExecutionPolicy Bypass -File '%azureps%' "
 
 rem Exchange
 call :copyExchange
+
+rem ConEmu
+call :createShortcut "ConEmu" "%ProgramFiles%\ConEmu\ConEmu64.exe"
 
 goto :eof
 
@@ -37,14 +55,16 @@ goto :eof
 		goto :eof
 	)
 	
-	call :createShortcut "VS%VS%" "%comspec%" "%wdir%" "/k '%~2\vsvars32.bat' " 
+	call :createShortcut "VS%VS%" "%comspec%" "/k '%~2\vsvars32.bat' " 
 	goto :eof
 	
 :createShortcut
-	if exist "%Shell%\%~1.lnk" goto :eof
+	set Shell=%Shells%\%~1.lnk
+	if "%force%" equ "yes" del /f /q "%Shell%" > nul 2>&1
+	if exist "%Shell%" goto :eof
 	if not exist "%~2" goto :eof
 	
-	cscript /nologo "%~dp0CreateShortcut.vbs" "%Shells%" %*
+	cscript /nologo "%~dp0CreateShortcut.vbs" "%Shells%" "%wdir%" %*
 	goto :eof
 
 
@@ -58,7 +78,7 @@ goto :eof
 	goto :eof
 
 	
-	
-
-
+:badArgs
+	echo usage: %~n0 [--force]
+	exit /b 1
 
