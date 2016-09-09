@@ -35,14 +35,18 @@ rem Git
 call :createShortcut "Git Bash" "%ProgramFiles%\Git\git-bash.exe" --cd-to-home
 
 rem Azure
-set azureps=%ProgramFiles(x86)%\Microsoft SDKs\Azure\PowerShell\ServiceManagement\Azure\Services\ShortcutStartup.ps1
-if exist "%azureps%" call :createShortcut AzurePS "%ps%" "-NoExit -ExecutionPolicy Bypass -File '%azureps%' "
+call :createPSShortcut "%ProgramFiles(x86)%\Microsoft SDKs\Azure\PowerShell\ServiceManagement\Azure\Services\ShortcutStartup.ps1" "Azure PS"
+call :createPSShortcut "%~d0\apps\Ev2PSClient\AzureServiceDeployClient.ps1" "Azure SD"
 
 rem Exchange
-call :copyExchange
+call :copyShortcut "%ALLUSERSPROFILE%\Microsoft\Windows\Start Menu\programs\Microsoft Exchange Server 2016\Exchange Management Shell.lnk" Exchange
 
 rem ConEmu
 call :createShortcut "ConEmu" "%ProgramFiles%\ConEmu\ConEmu64.exe"
+
+rem Moba
+call :createShortcut "Moba" "%ProgramFiles(x86)%\Mobatek\MobaXterm Personal Edition\MobaXterm.exe"
+
 
 goto :eof
 
@@ -67,16 +71,22 @@ goto :eof
 	cscript /nologo "%~dp0CreateShortcut.vbs" "%Shells%" "%wdir%" %*
 	goto :eof
 
-
-:copyExchange
-	set exch_src=%ALLUSERSPROFILE%\Microsoft\Windows\Start Menu\programs\Microsoft Exchange Server 2016\Exchange Management Shell.lnk
-	if not exist "%exch_src%" goto :eof
-	set exch_dst=%Shells%\Exchange.lnk
-	echo Creating %exch_dst%
-	copy /y "%exch_src%" "%exch_dst%" > nul
-	echo.	DONE
+:createPSShortcut
+	set ps1=%~1
+	if exist "%ps1%" call :createShortcut "%~2" "%ps%" "-NoExit -ExecutionPolicy Bypass -File '%ps1%' "
 	goto :eof
 
+:copyShortcut
+	set src=%~1
+	set dst=%~2
+	if not exist "%src%" goto :eof
+	set Shell=%Shells%\%dst%.lnk
+	if "%force%" equ "yes" del /f /q "%Shell%" > nul 2>&1
+	if exist "%Shell%" goto :eof
+	echo Creating %Shell%
+	copy /y "%src%" "%Shell%" > nul
+	echo.	DONE
+	goto :eof
 	
 :badArgs
 	echo usage: %~n0 [--force]
