@@ -117,6 +117,8 @@ alias gitm='git mergetool'
 
 alias xssh='ssh -XC -c blowfish-cbc'
 
+alias aliasf='alias | grep $*'
+
 git_work() {
 	git config --local user.name "Grégory Vandenbrouck"
 	git config --local user.email gregoryv@microsoft.com
