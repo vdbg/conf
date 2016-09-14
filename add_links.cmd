@@ -3,6 +3,7 @@ setlocal
 
 set target_root=f:\apps\bin
 call :ensure_target || exit /b 1
+set cmd_args=
 
 call :set_link false git			"%ProgramFiles%\Git\mingw64\bin\git.exe" "%ProgramFiles%\Git\bin\git.exe" "%ProgramFiles(x86)%\Git\bin\git.exe" 
 call :set_link false py			"%ProgramFiles(x86)%\Python 3.5\python.exe" "%ProgramFiles(x86)%\Python35-32\python.exe" 
@@ -17,6 +18,10 @@ call :set_link true ilspy		"%~d0\Apps\ILSpy\ILSpy.exe"
 call :set_link true xts			"%~d0\Apps\xts\xts.exe"
 call :set_link true chrome		"%ProgramFiles(x86)%\Google\Chrome\Application\chrome.exe"
 call :set_link true paint		"%ProgramFiles%\Paint.NET\PaintDotNet.exe" "%windir%\system32\mspaint.exe"
+
+set cmd_args=--processStart "slack.exe"
+call :set_link true slack "%LOCALAPPDATA%\slack\Update.exe"
+set cmd_args=
 
 goto :eof
 
@@ -41,8 +46,8 @@ goto :eof
 	if not exist "%link_dest%" goto :loop_dest
 
 	echo Creating link %link_dest% =^> %link_name%	
-	if /i "%is_ui%" equ "true" echo @start "" "%link_dest%" %%^* > "%link_name%"
-	if /i "%is_ui%" neq "true" echo @"%link_dest%" %%^* > "%link_name%"
+	if /i "%is_ui%" equ "true" echo @start "" "%link_dest%" %cmd_args% %%^* > "%link_name%"
+	if /i "%is_ui%" neq "true" echo @"%link_dest%" %cmd_args% %%^* > "%link_name%"
 	
 	goto :eof
 
