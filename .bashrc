@@ -115,6 +115,9 @@ alias gitdr='git diff --cached origin/master'
 alias gitu='git checkout'
 alias gitm='git mergetool'
 
+alias ssh_create='ssh-keygen -t rsa -b 4096 -C "vdb_g@hotmail.com"'
+alias ssh_copy='clip < ~/.ssh/id_rsa.pub'
+
 alias xssh='ssh -XC -c blowfish-cbc'
 
 alias aliasf='alias | grep $*'
