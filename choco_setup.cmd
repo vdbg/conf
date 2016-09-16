@@ -3,7 +3,11 @@ setlocal
 
 rem location and packages to install
 if not defined chocoRoot set chocoRoot=%~d0\Choco
-if not defined chocoPackages set chocoPackages=slack googlechrome notepadplusplus.install 7zip.install git.install vlc keepass.install python fiddler4 conemu "mobaxterm --allowEmptyChecksums" visualstudiocode "calibre --allow-empty-checksums" sumatrapdf.commandline "paint.net --allow-empty-checksums"
+set chocoPackagesWork=fiddler4 ilspy NugetPackageExplorer redis-desktop-manager slack
+set chocoPackagesUtil=7zip.install conemu git.install googlechrome keepass.install "mobaxterm --allowEmptyChecksums" notepadplusplus.install "paint.net --allow-empty-checksums" visualstudiocode
+set chocoPackagesHome="calibre --allow-empty-checksums" python sumatrapdf.commandline vlc
+if not defined chocoPackages set chocoPackages=%chocoPackagesUtil% %chocoPackagesHome% %chocoPackagesWork%
+rem  
 rem sysinternals atom nodejs powershell windirstat
 if not defined chocoExe set chocoExe=choco.exe
 
