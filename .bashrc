@@ -188,27 +188,34 @@ alias dev="cd $DEV_ROOT"
 
 git_sync() {
 	pushd "$DEV_ROOT"
+	git_recursive 3 pull
+	popd
+}
+
+git_recursive() {
+	level=$(($1-1))
+	if [ $level -eq 0 ]; then
+		echo Aborting on `pwd`
+		return
+	fi
 	for dir in $(ls -d */);
 	do
-		echo Syncing $dir ...
 		cd $dir
-		git pull
+		if [ -d ".git" ]; then
+			echo
+			echo ====================================
+			echo Running $2 on $dir ...
+			git $2
+		else
+			git_recursive $level $2
+		fi
 		cd ..
 	done
-	popd
 }
 
 git_status() {
 	pushd "$DEV_ROOT"
-	for dir in $(ls -d */);
-	do
-		echo
-		echo ====================================
-		echo Status in $dir:
-		cd $dir
-		git status
-		cd ..
-	done
+	git_recursive 3 status
 	popd
 }
 
