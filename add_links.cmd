@@ -18,6 +18,7 @@ call :set_link true ilspy		"%~d0\Apps\ILSpy\ILSpy.exe"
 call :set_link true xts			"%~d0\Apps\xts\xts.exe"
 call :set_link true chrome		"%ProgramFiles(x86)%\Google\Chrome\Application\chrome.exe"
 call :set_link true paint		"%ProgramFiles%\Paint.NET\PaintDotNet.exe" "%windir%\system32\mspaint.exe"
+call :set_link true rdm			"%ProgramFiles(x86)%\RedisDesktopManager\rdm.exe"
 
 set cmd_args=--processStart "slack.exe"
 call :set_link true slack "%LOCALAPPDATA%\slack\Update.exe"
