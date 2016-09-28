@@ -1,0 +1,66 @@
+# https://github.com/durdn/cfg/blob/master/.gitconfig
+
+[user]
+	name = Grégory Vandenbrouck
+	email = vdb_g@hotmail.com
+
+[push]
+	default = simple
+
+[merge]
+	tool = vimdiff
+
+[color]
+	diff = always
+	status = always
+	branch = always
+	interactive = always
+	ui = always
+	pager = true
+
+[color "branch"]
+	current = yellow reverse
+	local = yellow
+	remote = green
+
+[color "diff"]
+	meta = yellow bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
+
+[color "status"]
+	added = yellow
+	changed = green
+	untracked = cyan
+	
+[grep]
+	lineNumber = true
+	extendRegexp = true
+
+[alias]
+	s = status
+	a = add
+	c = commit
+	ac = commit -a -m
+	pp = push origin
+	p = pull origin
+	d = diff
+	
+	unstage = reset HEAD --
+	undo = checkout --
+	last = log -l HEAD
+	olog = log --oneline
+	solog = log --oneline -15
+	hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+	amend = !git log -n 1 --pretty=tformat:%s%n%n%b | git commit -F - --amend
+	branches = branch --all --list
+
+	master = checkout master
+	develop = checkout develop
+
+	ignore = !([ ! -e .gitignore ] && touch .gitignore) | echo $1 >>.gitignore
+	create = !git init && git add . && git commit -m \"initial commit\"
+	alias  = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\t=> \\2/' | sort
+
+
