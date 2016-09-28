@@ -20,6 +20,7 @@ call :set_link true chrome		"%ProgramFiles(x86)%\Google\Chrome\Application\chrom
 call :set_link true paint		"%ProgramFiles%\Paint.NET\PaintDotNet.exe" "%windir%\system32\mspaint.exe"
 call :set_link true rdm			"%ProgramFiles(x86)%\RedisDesktopManager\rdm.exe"
 call :set_link true sourcetree		"%ProgramFiles(x86)%\Atlassian\SourceTree\SourceTree.exe"
+call :set_link true azexplore		"%ProgramFiles(x86)%\Microsoft Azure Storage Explorer\StorageExplorer.exe"
 
 set cmd_args=--processStart "slack.exe"
 call :set_link true slack "%LOCALAPPDATA%\slack\Update.exe"

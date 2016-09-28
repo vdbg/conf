@@ -3,7 +3,7 @@ setlocal
 
 rem location and packages to install
 if not defined chocoRoot set chocoRoot=%~d0\Choco
-set chocoPackagesWork=fiddler4 ilspy NugetPackageExplorer redis-desktop-manager slack
+set chocoPackagesWork=fiddler4 ilspy NugetPackageExplorer redis-desktop-manager slack microsoftazurestorageexplorer
 set chocoPackagesUtil=7zip.install conemu git.install googlechrome keepass.install "mobaxterm --allowEmptyChecksums" notepadplusplus.install nuget.commandline "paint.net --allow-empty-checksums" sourcetree visualstudiocode
 set chocoPackagesHome="calibre --allow-empty-checksums" python sumatrapdf.commandline vlc
 if not defined chocoPackages set chocoPackages=%chocoPackagesUtil% %chocoPackagesHome% %chocoPackagesWork%
