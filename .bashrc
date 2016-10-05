@@ -86,6 +86,11 @@ add_alias() {
 	fi
 }
 
+# bash alias command cannot accept parameters
+f() {
+	grep --include=$2 --recursive -i $1
+}
+
 add_path "$HOME/bin"
 add_path "$HOME/algs4/bin" 
 add_path "/f/apps/bin"
