@@ -174,7 +174,7 @@ if [ "$OS" == "Linux" ]; then
 fi
 if [ "$OS" == "Linux" -a $UID -ne 0 ]; then
 	alias reboot='sudo reboot'
-	alias update="sudo -- sh -c 'apt-get update && apt-get dist-upgrade -y && apt autoremove -y && pglcmd update'"
+	alias update="sudo -- sh -c 'apt-get update && apt-get dist-upgrade -y && apt autoremove -y && command -v pglcmd > /dev/null 2>&1 && pglcmd update'"
 
 fi
 
