@@ -10,9 +10,11 @@ rem However, changing it directly & restarting service does not work
 
 call :set_env_path NugetMachineInstallRoot %CacheDrive%\CoreXTCache 
 call :set_env_path ChocolateyInstall %CacheDrive%\Choco 
-call :set_env_path TMP %CacheDir%\OS_FILES\OS_TMP /M
-call :set_env_path TMP %CacheDir%\OS_FILES\%USERNAME%_TMP
-call :set_env_path TEMP %CacheDir%\OS_FILES\%USERNAME%_TMP
+call :set_env_path TMP %CacheDrive%\OS_FILES\OS_TMP /M
+call :set_env_path TEMP %CacheDrive%\OS_FILES\OS_TMP /M
+
+call :set_env_path TMP %CacheDrive%\OS_FILES\%USERNAME%_TMP
+call :set_env_path TEMP %CacheDrive%\OS_FILES\%USERNAME%_TMP
 
 call :ensure_exists %CacheDrive%\symbols
 setx _NT_SYMBOL_PATH cache*%CacheDrive%\symbols;SRV*http://msdl.microsoft.com/download/symbols;SRV*http://symweb
