@@ -8,8 +8,9 @@ rem Search index: location is stored here
 rem HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Search\Databases\Windows
 rem However, changing it directly & restarting service does not work
 
-call :set_env_path NugetMachineInstallRoot %CacheDrive%\CoreXTCache 
-call :set_env_path ChocolateyInstall %CacheDrive%\Choco 
+call :set_env_path NugetMachineInstallRoot %CacheDrive%\CoreXTCache
+call :set_env_path ChocolateyInstall %CacheDrive%\Choco
+call :set_env_path ChocoRoot %CacheDrive%\Choco
 call :set_env_path TMP %CacheDrive%\OS_FILES\OS_TMP /M
 call :set_env_path TEMP %CacheDrive%\OS_FILES\OS_TMP /M
 
