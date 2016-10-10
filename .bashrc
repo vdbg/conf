@@ -198,9 +198,8 @@ git_sync() {
 }
 
 git_recursive() {
-	level=$(($1-1))
-	if [ $level -eq 0 ]; then
-		echo Aborting on `pwd`
+	if [ $1 -eq 0 ]; then
+		# echo Aborting on `pwd`
 		return
 	fi
 	for dir in $(ls -d */);
@@ -209,10 +208,10 @@ git_recursive() {
 		if [ -d ".git" ]; then
 			echo
 			echo ====================================
-			echo Running $2 on $dir ...
+			echo Running $2 on `pwd` ...
 			git $2
 		else
-			git_recursive $level $2
+			git_recursive $(($1 -1)) $2
 		fi
 		cd ..
 	done
