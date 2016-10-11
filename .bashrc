@@ -44,7 +44,16 @@ SSH_ENV=$HOME/.ssh/environment
 # GIT_PS1_SHOWUNTRACKEDFILES=yes
 
 # Include the current e-mail in the prompt
-PS1='\[\033]0;$MSYSTEM:${PWD//[^[:ascii:]]/?}\007\]\n\[\033[32m\]\u@\h \[\033[35m\]$MSYSTEM \[\033[33m\]\w\[\033[36m\]`__git_ps1 " (%s $(git config --get user.email)) "`\[\033[0m\]\n\$ '
+# __git_ps1 may not be available
+type -t __git_ps1 | grep -q function
+if [ $? -eq 1 ]; then
+        # function does not exist
+        PS1='\[\033]0;$MSYSTEM:${PWD//[^[:ascii:]]/?}\007\]\n\[\033[32m\]\u@\h \[\033[35m\]$MSYSTEM \[\033[33m\]\w\[\033[36m\] ?\[\033[0m\]\n\$ '
+else
+		# function does exist
+        PS1='\[\033]0;$MSYSTEM:${PWD//[^[:ascii:]]/?}\007\]\n\[\033[32m\]\u@\h \[\033[35m\]$MSYSTEM \[\033[33m\]\w\[\033[36m\]`__git_ps1 " (%s $(git config --get user.email)) "`\[\033[0m\]\n\$ '
+fi
+
 
 # start the ssh-agent
 function start_agent {
@@ -229,9 +238,5 @@ git_wincred() {
 
 export MY_CONF_ROOT=$DEV_ROOT/conf
 export MYVIMRC=$MY_CONF_ROOT/.vimrc
-# Set vimrc's location and source it on vim startup
-# VIMINIT does not always work
-# export VIMINIT=':silent source "$MYVIMRC"'
-[ ! -f ~/.vimrc ] && ln -s "$MYVIMRC" ~/.vimrc
 
 
