@@ -13,6 +13,7 @@ call :set_env_path ChocolateyInstall %CacheDrive%\Choco
 call :set_env_path ChocoRoot %CacheDrive%\Choco
 call :set_env_path TMP %CacheDrive%\OS_FILES\OS_TMP /M
 call :set_env_path TEMP %CacheDrive%\OS_FILES\OS_TMP /M
+call :set_env_path _CSRUN_STATE_DIRECTORY %CacheDrive%\OS_FILES\CSRUN /M
 
 call :set_env_path TMP %CacheDrive%\OS_FILES\%USERNAME%_TMP
 call :set_env_path TEMP %CacheDrive%\OS_FILES\%USERNAME%_TMP
