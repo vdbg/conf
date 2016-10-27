@@ -9,7 +9,7 @@ call :set_link false git			"%ProgramFiles%\Git\mingw64\bin\git.exe" "%ProgramFil
 call :set_link false py			"%ProgramFiles(x86)%\Python 3.5\python.exe" "%ProgramFiles(x86)%\Python35-32\python.exe" 
 call :set_link true npp			"%ProgramFiles(x86)%\Notepad++\notepad++.exe" "%windir%\system32\notepad.exe" "%windir%\notepad.exe"
 call :set_link true windbg		"%SystemDrive%\debuggers\windbg.exe"
-call :set_link true ewseditor	"%~d0\Apps\EWSEditor 1.13 - bin\EWSEditor.exe"
+call :set_link true ewseditor	"%~d0\Apps\EWSEditor 1.17 - bin\EWSEditor.exe" "%~d0\Apps\EWSEditor 1.13 - bin\EWSEditor.exe"
 call :set_link true ie			"%ProgramFiles%\Internet Explorer\iexplore.exe"
 call :set_link true stylecopeditor "%ProgramFiles(x86)%\StyleCop 4.7\StyleCopSettingsEditor.exe"
 call :set_link true snip			"%WINDIR%\system32\snippingtool.exe"
