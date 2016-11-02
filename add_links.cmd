@@ -7,7 +7,7 @@ set cmd_args=
 
 call :set_link false git			"%ProgramFiles%\Git\mingw64\bin\git.exe" "%ProgramFiles%\Git\bin\git.exe" "%ProgramFiles(x86)%\Git\bin\git.exe" 
 call :set_link false py			"%ProgramFiles(x86)%\Python 3.5\python.exe" "%ProgramFiles(x86)%\Python35-32\python.exe" 
-call :set_link true npp			"%ProgramFiles(x86)%\Notepad++\notepad++.exe" "%windir%\system32\notepad.exe" "%windir%\notepad.exe"
+call :set_link true npp			"%ProgramFiles%\Notepad++\notepad++.exe" "%ProgramFiles(x86)%\Notepad++\notepad++.exe" "%windir%\system32\notepad.exe" "%windir%\notepad.exe"
 call :set_link true windbg		"%SystemDrive%\debuggers\windbg.exe"
 call :set_link true ewseditor	"%~d0\Apps\EWSEditor 1.17 - bin\EWSEditor.exe" "%~d0\Apps\EWSEditor 1.13 - bin\EWSEditor.exe"
 call :set_link true ie			"%ProgramFiles%\Internet Explorer\iexplore.exe"
