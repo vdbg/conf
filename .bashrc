@@ -158,7 +158,7 @@ git_nuke() {
 			echo "NUKING"
 			git reset HEAD
 			git checkout .
-			git clean -f
+			git clean -f -x -d
 			git status
 		;;
 		* )
@@ -180,6 +180,7 @@ if [ "$OS" == "Linux" ]; then
 	add_alias chrome chromium-browser 
 	add_alias mstsc remmina
 	add_alias snip shutter
+	add_alias sumatrapdf evince
 
 	if [ "${0:0}" != "-" ]; then
 		# not a login shell, therefore lacking git completion
