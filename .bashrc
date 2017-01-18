@@ -170,6 +170,7 @@ git_nuke() {
 if [ "$OS" == "Windows" ]; then
 	alias n=notepad.exe
 	add_alias npp '/c/Program Files (x86)/Notepad++/notepad++.exe'
+	add_alias npp '/c/Program Files/Notepad++/notepad++.exe'
 	add_alias chrome '/c/Program Files (x86)/Google/Chrome/Application/chrome.exe'
 	add_alias rstudio '/c/Program Files/RStudio/bin/rstudio.exe'
 	alias snip=snippingtool.exe
