@@ -208,6 +208,12 @@ git_sync() {
 	popd
 }
 
+git_gc() {
+	pushd "$DEV_ROOT"
+	git_recursive 3 gc
+	popd
+}
+
 git_recursive() {
 	if [ $1 -eq 0 ]; then
 		# echo Aborting on `pwd`
