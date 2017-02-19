@@ -208,6 +208,12 @@ git_sync() {
 	popd
 }
 
+git_sync_clean() {
+	pushd "$DEV_ROOT"
+	git_recursive 3 'pull -p'
+	popd
+}
+
 git_gc() {
 	pushd "$DEV_ROOT"
 	git_recursive 3 gc
@@ -228,7 +234,7 @@ git_recursive() {
 			echo Running $2 on `pwd` ...
 			git $2
 		else
-			git_recursive $(($1 -1)) $2
+			git_recursive $(($1 -1)) "$2"
 		fi
 		cd ..
 	done
