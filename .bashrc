@@ -196,6 +196,8 @@ fi
 
 if [ -d "$HOME/Git" ]; then
 	export DEV_ROOT=~/Git
+elif [ -d "$HOME/git" ]; then
+	export DEV_ROOT=~/git
 elif [ -d "/f/git" ]; then
 	export DEV_ROOT=/f/git
 fi
