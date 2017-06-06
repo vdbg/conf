@@ -110,6 +110,7 @@ vs12="%ProgramFiles(x86)%\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe" $
 vs12e="%ProgramFiles(x86)%\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe" /Edit $*
 vs14="%ProgramFiles(x86)%\Microsoft Visual Studio 14.0\Common7\IDE\devenv.exe" $*
 vs14e="%ProgramFiles(x86)%\Microsoft Visual Studio 14.0\Common7\IDE\devenv.exe" /Edit $*
+vs15="%ProgramFiles(x86)%\Microsoft Visual Studio\2017\Enterprise\Common7\IDE\devenv.exe" $*
 vs=if defined VisualStudioVersion "%ProgramFiles(x86)%\Microsoft Visual Studio %VisualStudioVersion%\Common7\IDE\devenv.exe" $*
 vse=if defined VisualStudioVersion "%ProgramFiles(x86)%\Microsoft Visual Studio %VisualStudioVersion%\Common7\IDE\devenv.exe" /Edit $*
 
