@@ -1,4 +1,4 @@
-# https://github.com/durdn/cfg/blob/master/.gitconfig
+﻿# https://github.com/durdn/cfg/blob/master/.gitconfig
 
 [user]
 	name = Grégory Vandenbrouck
@@ -58,6 +58,7 @@
 
 	master = checkout master
 	develop = checkout develop
+	dev = checkout dev
 
 	ignore = !([ ! -e .gitignore ] && touch .gitignore) | echo $1 >>.gitignore
 	create = !git init && git add . && git commit -m \"initial commit\"
