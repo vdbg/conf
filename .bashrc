@@ -224,17 +224,25 @@ git_gc() {
 
 git_recursive() {
 	if [ $1 -eq 0 ]; then
-		# echo Aborting on `pwd`
+		echo Aborting on `pwd`
+		return
+	fi
+	basename=${PWD##*/}
+	if [ "$basename" == "CommonPackages" ]; then
+		echo Abording on`pwd`
 		return
 	fi
 	for dir in $(ls -d */);
 	do
 		cd $dir
-		if [ -d ".git" ]; then
+		if [ -d ".git" -o -f ".git" ]; then
 			echo
 			echo ====================================
 			echo Running $2 on `pwd` ...
 			git $2
+			if [ -f ".gitmodules" ]; then
+				git_recursive $(($1 +2)) "$2"
+			fi
 		else
 			git_recursive $(($1 -1)) "$2"
 		fi
