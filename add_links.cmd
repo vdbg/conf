@@ -5,7 +5,6 @@ set target_root=f:\apps\bin
 call :ensure_target || exit /b 1
 set cmd_args=
 
-call :set_link false code		"%ProgramFiles%\Microsoft VS Code\Code.exe"
 call :set_link false git		"%ProgramFiles%\Git\cmd\git.exe" "%ProgramFiles%\Git\mingw64\bin\git.exe" "%ProgramFiles%\Git\bin\git.exe" "%ProgramFiles(x86)%\Git\bin\git.exe"
 call :set_link false py			"%ProgramFiles(x86)%\Python 3.5\python.exe" "%ProgramFiles(x86)%\Python35-32\python.exe"
 call :set_link false pip		"%ProgramFiles(x86)%\Python 3.5\Scripts\pip.exe" "%ProgramFiles(x86)%\Python35-32\Scripts\pip.exe"
@@ -26,6 +25,9 @@ call :set_link true azexplore		"%ProgramFiles(x86)%\Microsoft Azure Storage Expl
 call :set_link true moba		"%ProgramFiles(x86)%\Mobatek\MobaXterm Personal Edition\MobaXterm.exe"
 call :set_link true pdf			"%~d0\Choco\bin\SumatraPDF.exe"
 call :set_link true code		"%ProgramFiles%\Microsoft VS Code\Code.exe" "%ProgramFiles(x86)%\Microsoft VS Code\bin\code.cmd"
+call :set_link false node		"%ProgramFiles%\nodejs\node.exe"
+call :set_link false npm		"%ProgramFiles%\nodejs\npm.cmd"
+
 
 set cmd_args=--processStart "slack.exe"
 call :set_link true slack "%LOCALAPPDATA%\slack\Update.exe"
