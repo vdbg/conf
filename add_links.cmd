@@ -24,6 +24,7 @@ call :set_link true sourcetree		"%ProgramFiles(x86)%\Atlassian\SourceTree\Source
 call :set_link true azexplore		"%ProgramFiles(x86)%\Microsoft Azure Storage Explorer\StorageExplorer.exe"
 call :set_link true moba		"%ProgramFiles(x86)%\Mobatek\MobaXterm Personal Edition\MobaXterm.exe"
 call :set_link true pdf			"%~d0\Choco\bin\SumatraPDF.exe"
+call :set_link true code		"%ProgramFiles%\Microsoft VS Code\Code.exe" "%ProgramFiles(x86)%\Microsoft VS Code\bin\code.cmd"
 
 set cmd_args=--processStart "slack.exe"
 call :set_link true slack "%LOCALAPPDATA%\slack\Update.exe"

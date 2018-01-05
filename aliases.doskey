@@ -117,8 +117,6 @@ vse=if defined VisualStudioVersion "%ProgramFiles(x86)%\Microsoft Visual Studio 
 vsdbg=if defined VisualStudioVersion "%ProgramFiles(x86)%\Microsoft Visual Studio %VisualStudioVersion%\Common7\IDE\devenv.exe" /debugexe $*
 vstest="%ProgramFiles(x86)%\microsoft visual studio 12.0\Common7\IDE\CommonExtensions\Microsoft\TestWindow\vstest.console.exe" $*
 
-code="%ProgramFiles(x86)%\Microsoft VS Code\bin\code.cmd" . $*
-
 #=  Editing
 n=notepad.exe $*
 rstudio="%ProgramFiles%\RStudio\bin\rstudio.exe" $*
