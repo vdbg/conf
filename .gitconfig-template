@@ -46,6 +46,7 @@
 	pp = push origin
 	p = pull origin
 	d = diff
+	check = diff --check
 	
 	unstage = reset HEAD --
 	undo = checkout --

@@ -45,11 +45,15 @@ cdc=cd|clip & echo Copied current directory to clipboard.
 gitp=git pull $*
 gitpp=git push $*
 gits=git status $*
+gitss=git status -s $*
 gitc=git commit $*
 gita=git add $*
 gitd=git diff $*
+gitdd=git diff --staged $*
 gitu=git checkout $*
 gitm=git mergetool $*
+gitchk=git diff --check
+
 
 #= svn
 svnam=svn status | findstr /b [M^|A]
