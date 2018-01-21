@@ -6,6 +6,7 @@ call :ensure_target || exit /b 1
 set cmd_args=
 
 call :set_link false git		"%ProgramFiles%\Git\cmd\git.exe" "%ProgramFiles%\Git\mingw64\bin\git.exe" "%ProgramFiles%\Git\bin\git.exe" "%ProgramFiles(x86)%\Git\bin\git.exe"
+call :set_link false start-ssh-agent	"%ProgramFiles%\Git\cmd\start-ssh-agent.cmd"
 call :set_link false py			"%ProgramFiles(x86)%\Python 3.5\python.exe" "%ProgramFiles(x86)%\Python35-32\python.exe"
 call :set_link false pip		"%ProgramFiles(x86)%\Python 3.5\Scripts\pip.exe" "%ProgramFiles(x86)%\Python35-32\Scripts\pip.exe"
 call :set_link true npp			"%ProgramFiles%\Notepad++\notepad++.exe" "%ProgramFiles(x86)%\Notepad++\notepad++.exe" "%windir%\system32\notepad.exe" "%windir%\notepad.exe"
