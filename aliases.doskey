@@ -6,6 +6,7 @@ msbr=msbuild /nr:false /m "/clp:verbosity=minimal;Summary" /fl /flp:Verbosity=no
 msbca=msbuild /nr:false /m "/clp:verbosity=minimal;Summary" /fl /flp:Verbosity=normal /p:TreatWarningsAsErrors="true" /p:EnableCodeAnalysis=true $*
 msbdiag=msbuild /fl /flp:verbosity=diag /pp:diaglog.txt $*
 clean=msbuild /m /t:Clean $*
+fixvs=rmdir /s /q "%TMP%\VisualStudioTestExplorerExtensions"
 
 terr=type buildd.err
 twrn=type buildd.wrn
