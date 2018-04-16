@@ -229,7 +229,7 @@ git_recursive() {
 	fi
 	basename=${PWD##*/}
 	if [ "$basename" == "CommonPackages" ]; then
-		echo Abording on`pwd`
+		echo Aborting on`pwd`
 		return
 	fi
 	for dir in $(ls -d */);
