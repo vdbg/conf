@@ -182,6 +182,15 @@ if [ "$OS" == "Linux" ]; then
 	add_alias mstsc remmina
 	add_alias snip shutter
 	add_alias sumatrapdf evince
+	add_alias top htop
+	# https://github.com/sharkdp/bat/releases
+	add_alias cat bat
+	# https://github.com/sharkdp/fd/releases
+	add_alias find fd
+	# curl -O https://raw.githubusercontent.com/denilsonsa/prettyping/master/prettyping
+	add_alias ping prettyping
+	add_alias du ncdu
+	add_alias help tldr
 
 	if [ "${0:0}" != "-" ]; then
 		# not a login shell, therefore lacking git completion
