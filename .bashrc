@@ -136,10 +136,10 @@ alias xssh='ssh -XC -c blowfish-cbc'
 
 alias aliasf='alias | grep $*'
 
-git_work() {
-	git config --local user.name "Grégory Vandenbrouck"
-	git config --local user.email gregoryv@microsoft.com
-}
+# git_work() {
+#	git config --local user.name "Grégory Vandenbrouck"
+#	git config --local user.email gregoryv@microsoft.com
+# }
 
 git_perso() {
 	git config --local user.name vdbg
@@ -166,6 +166,11 @@ git_nuke() {
 		;;
 	esac
 }
+
+if [ "$OS" == "Mac" ]; then
+	export CLICOLOR=1
+	export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
+fi
 
 if [ "$OS" == "Windows" ]; then
 	alias n=notepad.exe
