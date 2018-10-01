@@ -43,17 +43,26 @@ SSH_ENV=$HOME/.ssh/environment
 # GIT_PS1_SHOWSTASHSTATE=yes
 # GIT_PS1_SHOWUNTRACKEDFILES=yes
 
+if [ "$OS" == "Mac" ]; then
+	if [ -f /usr/local/git/contrib/completion/git-prompt.sh  ]; then
+		. /usr/local/git/contrib/completion/git-prompt.sh 
+	fi
+
+	if [ -f /usr/local/git/contrib/completion/git-completion.bash  ]; then
+		. /usr/local/git/contrib/completion/git-completion.bash 
+	fi
+fi
+
 # Include the current e-mail in the prompt
 # __git_ps1 may not be available
 type -t __git_ps1 | grep -q function
 if [ $? -eq 1 ]; then
-        # function does not exist
-        PS1='\[\033]0;$MSYSTEM:${PWD//[^[:ascii:]]/?}\007\]\n\[\033[32m\]\u@\h \[\033[35m\]$MSYSTEM \[\033[33m\]\w\[\033[36m\] ?\[\033[0m\]\n\$ '
+    # __git_ps1 does not exist
+    PS1='\[\033]0;$MSYSTEM:${PWD//[^[:ascii:]]/?}\007\]\n\[\033[32m\]\u@\h \[\033[35m\]$MSYSTEM \[\033[33m\]\w\[\033[36m\] ?\[\033[0m\]\n\$ '
 else
-		# function does exist
-        PS1='\[\033]0;$MSYSTEM:${PWD//[^[:ascii:]]/?}\007\]\n\[\033[32m\]\u@\h \[\033[35m\]$MSYSTEM \[\033[33m\]\w\[\033[36m\]`__git_ps1 " (%s $(git config --get user.email)) "`\[\033[0m\]\n\$ '
+    # __git_ps1 does exist
+    PS1='\[\033]0;$MSYSTEM:${PWD//[^[:ascii:]]/?}\007\]\n\[\033[32m\]\u@\h \[\033[35m\]$MSYSTEM \[\033[33m\]\w\[\033[36m\]`__git_ps1 " 🙂 %s $(git config --get user.email)"`\[\033[0m\]\n\$ '
 fi
-
 
 # start the ssh-agent
 function start_agent {
