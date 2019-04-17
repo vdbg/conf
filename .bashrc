@@ -44,13 +44,8 @@ SSH_ENV=$HOME/.ssh/environment
 # GIT_PS1_SHOWUNTRACKEDFILES=yes
 
 if [ "$OS" == "Mac" ]; then
-	if [ -f /usr/local/git/contrib/completion/git-prompt.sh  ]; then
-		. /usr/local/git/contrib/completion/git-prompt.sh 
-	fi
-
-	if [ -f /usr/local/git/contrib/completion/git-completion.bash  ]; then
-		. /usr/local/git/contrib/completion/git-completion.bash 
-	fi
+	[ -f /usr/local/git/contrib/completion/git-prompt.sh ] && . /usr/local/git/contrib/completion/git-prompt.sh
+	[ -f /usr/local/git/contrib/completion/git-completion.bash ] && . /usr/local/git/contrib/completion/git-completion.bash 
 fi
 
 # Include the current e-mail in the prompt
@@ -73,6 +68,7 @@ function start_agent {
 	chmod 600 "${SSH_ENV}"
 	. "${SSH_ENV}" > /dev/null
 	/usr/bin/ssh-add
+	[ -f ~/.ssh/id_rsa_perso ] && ssh-add ~/.ssh/id_rsa_perso
 }
 
 if [ "$OS" == "Windows" ]; then
@@ -179,6 +175,8 @@ git_nuke() {
 if [ "$OS" == "Mac" ]; then
 	export CLICOLOR=1
 	export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
+	alias ssh-work=mwinit && ssh-add -K -t 72000
+	add_alias code '/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code'
 fi
 
 if [ "$OS" == "Windows" ]; then
